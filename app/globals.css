@@ -1,0 +1,126 @@
+@import "tailwindcss";
+@import "../node_modules/@heroui/styles/dist/index.css";
+
+@theme {
+  /* ─── Brand Colors ─── */
+  --color-primary:       #4B245E;
+  --color-primary-hover: #3A1A4A;
+  --color-secondary:     #C66B7D;
+  --color-accent:        #F2B6A0;
+  --color-bg:            #FAF5EF;
+  --color-surface:       #F0E9E0;
+  --color-ink:           #211A22;
+  --color-green-trust:   #4F7C68;
+  --color-amber-care:    #D9963D;
+  --color-muted:         #6B5D6E;
+  --color-border:        #DDD3CC;
+  --color-dark-red:      #C0392B;
+}
+
+/* ─── HeroUI theme overrides — purple/rose/peach palette ─── */
+:root {
+  --accent: oklch(0.31 0.11 313);                 /* purple #4B245E */
+  --accent-foreground: #ffffff;
+  --primary: oklch(0.31 0.11 313);
+  --primary-foreground: #ffffff;
+  --secondary: oklch(0.61 0.12 12);               /* rose #C66B7D */
+  --secondary-foreground: #ffffff;
+  --background: oklch(0.96 0.013 80);             /* paper #FAF5EF */
+  --foreground: oklch(0.20 0.022 318);            /* ink #211A22 */
+  --border: oklch(0.86 0.02 70);                  /* #DDD3CC */
+  --ring: oklch(0.31 0.11 313);
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --font-cairo:   var(--next-font-cairo);
+  --font-tajawal: var(--next-font-ibm-plex-arabic);
+  --font-arabic:  var(--next-font-ibm-plex-arabic);
+  --font-en:      var(--next-font-inter);
+}
+
+:root {
+  --color-primary:       #4B245E;
+  --color-primary-hover: #3A1A4A;
+  --color-secondary:     #C66B7D;
+  --color-accent:        #F2B6A0;
+  --color-bg:            #FAF5EF;
+  --color-surface:       #F0E9E0;
+  --color-ink:           #211A22;
+  --color-green-trust:   #4F7C68;
+  --color-muted:         #6B5D6E;
+  --color-border:        #DDD3CC;
+}
+
+html {
+  font-size: 17px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FAF5EF;
+  color: #211A22;
+  font-family: var(--next-font-ibm-plex-arabic), 'Cairo', 'Noto Sans Arabic', sans-serif;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--next-font-ibm-plex-arabic), 'Cairo', sans-serif;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+:focus-visible {
+  outline: 3px solid #4B245E;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Remove 300ms tap delay on mobile ─── */
+a, button, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* ─── Respect reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Minimum touch target size for small interactive elements ─── */
+.min-touch {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* ─── Press/active feedback for button-styled links ─── */
+.button {
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+.button:active {
+  transform: scale(0.96);
+  opacity: 0.9;
+}
