@@ -4,7 +4,7 @@ import { CampaignGrid } from "@/components/CampaignGrid";
 import type { CampaignCardProps } from "@/components/CampaignCard";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
-import { fadeInUp, scaleIn } from "@/lib/animations";
+import { scaleIn } from "@/lib/animations";
 
 // ─── Metadata ────────────────────────────────────────────────────────────────
 
@@ -111,9 +111,8 @@ export default function CampaignsPage() {
         className="bg-bg px-4 py-12 md:px-8 md:py-16 lg:px-16 lg:py-20"
       >
         <div className="max-w-6xl mx-auto">
-          <AnimateOnScroll variants={fadeInUp}>
-            <CampaignGrid campaigns={campaigns} />
-          </AnimateOnScroll>
+          {/* الكروت بتكشف نفسها فرديًا عند السكرول — بدون wrapper كتلي */}
+          <CampaignGrid campaigns={campaigns} />
         </div>
       </section>
     </>

@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Tabs } from "@heroui/react";
-import { staggerContainer } from "@/lib/animations";
 import { CampaignCard, type CampaignCardProps } from "@/components/CampaignCard";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -60,12 +58,9 @@ export function CampaignGrid({ campaigns }: CampaignGridProps) {
         </Tabs.ListContainer>
       </Tabs>
 
-      {/* ── Grid ───────────────────────────────────────────────────────── */}
-      <motion.div
+      {/* ── Grid — كل كارت يكشف نفسه عند دخوله الشاشة ────────────────── */}
+      <div
         key={activeFilter}
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
       >
         {filtered.map((campaign) => (
@@ -80,7 +75,7 @@ export function CampaignGrid({ campaigns }: CampaignGridProps) {
             slug={"slug" in campaign ? (campaign as { slug?: string }).slug : undefined}
           />
         ))}
-      </motion.div>
+      </div>
 
       {/* Empty state */}
       {filtered.length === 0 && (

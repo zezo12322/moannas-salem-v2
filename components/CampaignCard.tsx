@@ -75,6 +75,9 @@ export function CampaignCard({
     <motion.div
       dir="rtl"
       variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.15 }}
       whileHover={{ scale: 1.02, transition: { duration: 0.22, ease: "easeOut" } }}
       className="h-full"
     >
