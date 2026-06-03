@@ -227,7 +227,7 @@ export default function HomePage() {
             >
               بيئة عمل آمنة وعادلة
               <br className="hidden sm:block" />
-              <span className="text-accent"> للصحفيات المصريات</span>
+              <span className="text-secondary"> للصحفيات المصريات</span>
             </motion.h1>
 
             <motion.p
