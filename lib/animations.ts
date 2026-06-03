@@ -8,7 +8,7 @@ export const fadeInUp: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: easeOutExpo },
+    transition: { duration: 0.9, ease: easeOutExpo },
   },
 };
 
@@ -19,7 +19,7 @@ export const blurInUp: Variants = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.6, ease: easeOutExpo },
+    transition: { duration: 1.1, ease: easeOutExpo },
   },
 };
 
@@ -28,7 +28,7 @@ export const fadeInRight: Variants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.45, ease: easeOutExpo },
+    transition: { duration: 0.8, ease: easeOutExpo },
   },
 };
 
@@ -37,7 +37,7 @@ export const fadeInLeft: Variants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.45, ease: easeOutExpo },
+    transition: { duration: 0.8, ease: easeOutExpo },
   },
 };
 
@@ -46,13 +46,13 @@ export const scaleIn: Variants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.45, ease: easeOutExpo },
+    transition: { duration: 0.8, ease: easeOutExpo },
   },
 };
 
 export const slideInFromTop: Variants = {
   hidden: { opacity: 0, y: -20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: easeOutExpo } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: easeOutExpo } },
 };
 
 // ─── دخول جانبي واضح — للأعمدة والكروت المتناوبة ───
@@ -63,7 +63,7 @@ export const slideInRight: Variants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: easeOutExpo },
+    transition: { duration: 1.1, ease: easeOutExpo },
   },
 };
 
@@ -73,7 +73,7 @@ export const slideInLeft: Variants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: easeOutExpo },
+    transition: { duration: 1.1, ease: easeOutExpo },
   },
 };
 
@@ -83,7 +83,7 @@ export const zoomOut: Variants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.55, ease: easeOutExpo },
+    transition: { duration: 1, ease: easeOutExpo },
   },
 };
 
@@ -93,7 +93,7 @@ export const zoomIn: Variants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.55, ease: easeOutExpo },
+    transition: { duration: 1, ease: easeOutExpo },
   },
 };
 
@@ -104,7 +104,7 @@ export const flipUp: Variants = {
     opacity: 1,
     rotateX: 0,
     y: 0,
-    transition: { duration: 0.6, ease: easeOutExpo },
+    transition: { duration: 1.1, ease: easeOutExpo },
   },
 };
 
@@ -112,14 +112,14 @@ export const flipUp: Variants = {
 export const staggerContainer: Variants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.09, delayChildren: 0.06 },
+    transition: { staggerChildren: 0.18, delayChildren: 0.1 },
   },
 };
 
 export const staggerFast: Variants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.05 },
+    transition: { staggerChildren: 0.1 },
   },
 };
 
@@ -130,7 +130,7 @@ export const heroItem: Variants = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.7, ease: easeOutExpo },
+    transition: { duration: 1.2, ease: easeOutExpo },
   },
 };
 

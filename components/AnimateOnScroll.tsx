@@ -27,7 +27,7 @@ export function AnimateOnScroll({
       whileInView="visible"
       viewport={{ once: true, amount: 0.05 }}
       variants={variants}
-      transition={{ delay, duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ delay, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}

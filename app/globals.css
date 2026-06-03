@@ -250,7 +250,7 @@ a, button, [role="button"] {
   from { transform: scale(1.18); }
   to   { transform: scale(1); }
 }
-.hero-bg-zoom { animation: hero-zoom 1.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards; }
+.hero-bg-zoom { animation: hero-zoom 2.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards; }
 
 /* Slow rotation for decorative elements */
 @keyframes spin-slow { to { transform: rotate(360deg); } }
