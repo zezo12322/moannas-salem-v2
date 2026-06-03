@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { scaleIn } from "@/lib/animations";
 
 export const metadata: Metadata = {
   title: "الأمان الرقمي",
@@ -119,27 +120,35 @@ export default function DigitalPage() {
       >
         <div className="max-w-3xl mx-auto text-center flex flex-col gap-4">
           {/* Breadcrumb */}
-          <nav
-            aria-label="مسار التنقل"
-            className="flex justify-center gap-2 font-tajawal text-sm text-white/60"
-          >
-            <Link href="/resources" className="hover:text-white transition-colors">
-              الموارد
-            </Link>
-            <span aria-hidden="true">/</span>
-            <span className="text-white/90">الأمان الرقمي</span>
-          </nav>
+          <AnimateOnScroll>
+            <nav
+              aria-label="مسار التنقل"
+              className="flex justify-center gap-2 font-tajawal text-sm text-white/60"
+            >
+              <Link href="/resources" className="hover:text-white transition-colors">
+                الموارد
+              </Link>
+              <span aria-hidden="true">/</span>
+              <span className="text-white/90">الأمان الرقمي</span>
+            </nav>
+          </AnimateOnScroll>
 
-          <h1 className="font-cairo font-bold text-3xl md:text-4xl lg:text-5xl text-white leading-snug">
-            الأمان الرقمي
-          </h1>
-          <p className="font-tajawal text-base md:text-lg text-white/85 leading-relaxed max-w-xl mx-auto">
-            حمايتكِ الرقمية حق، ليست رفاهية
-          </p>
-          <div
-            aria-hidden="true"
-            className="mx-auto mt-2 w-16 h-1 rounded-full bg-white/50"
-          />
+          <AnimateOnScroll delay={0.1}>
+            <h1 className="font-cairo font-bold text-3xl md:text-4xl lg:text-5xl text-white leading-snug">
+              الأمان الرقمي
+            </h1>
+          </AnimateOnScroll>
+          <AnimateOnScroll delay={0.2}>
+            <p className="font-tajawal text-base md:text-lg text-white/85 leading-relaxed max-w-xl mx-auto">
+              حمايتكِ الرقمية حق، ليست رفاهية
+            </p>
+          </AnimateOnScroll>
+          <AnimateOnScroll delay={0.3} variants={scaleIn}>
+            <div
+              aria-hidden="true"
+              className="mx-auto mt-2 w-16 h-1 rounded-full bg-white/50"
+            />
+          </AnimateOnScroll>
         </div>
       </section>
 

@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { buttonVariants, Card } from "@heroui/react";
 import { programs, getProgramById } from "@/lib/programs";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { scaleIn } from "@/lib/animations";
 import TrainingRegistrationForm from "@/app/training/TrainingRegistrationForm";
 
 // ─── Static generation ────────────────────────────────────────────────────────
@@ -65,26 +66,30 @@ export default async function ProgramPage({
       <section dir="rtl" className="bg-primary px-4 py-14 md:px-8 md:py-20 lg:py-24">
         <div className="max-w-4xl mx-auto flex flex-col gap-5 text-center">
           {/* Breadcrumb */}
-          <nav aria-label="مسار التنقل" className="flex justify-center gap-2 font-tajawal text-sm text-white/60">
-            <Link href="/training" className="hover:text-white transition-colors">التدريب</Link>
-            <span aria-hidden="true">/</span>
-            <span className="text-white/90">{program.title}</span>
-          </nav>
+          <AnimateOnScroll>
+            <nav aria-label="مسار التنقل" className="flex justify-center gap-2 font-tajawal text-sm text-white/60">
+              <Link href="/training" className="hover:text-white transition-colors">التدريب</Link>
+              <span aria-hidden="true">/</span>
+              <span className="text-white/90">{program.title}</span>
+            </nav>
+          </AnimateOnScroll>
 
           {/* Badge */}
-          <div className="flex justify-center">
+          <AnimateOnScroll variants={scaleIn} delay={0.05} className="flex justify-center">
             <span className={`inline-block font-cairo font-semibold text-sm px-5 py-2 rounded-full ${program.badgeClass}`}>
               {program.badge}
             </span>
-          </div>
+          </AnimateOnScroll>
 
           {/* Title */}
-          <h1 className="font-cairo font-bold text-3xl md:text-4xl lg:text-5xl text-white leading-snug">
-            {program.title}
-          </h1>
+          <AnimateOnScroll delay={0.1}>
+            <h1 className="font-cairo font-bold text-3xl md:text-4xl lg:text-5xl text-white leading-snug">
+              {program.title}
+            </h1>
+          </AnimateOnScroll>
 
           {/* Status + meta */}
-          <div className="flex flex-wrap justify-center items-center gap-3 text-sm">
+          <AnimateOnScroll delay={0.15} className="flex flex-wrap justify-center items-center gap-3 text-sm">
             <span
               className={`font-cairo font-medium px-3 py-1 rounded-full text-xs ${
                 program.statusAvailable
@@ -102,7 +107,7 @@ export default async function ProgramPage({
             {program.duration && (
               <span className="font-tajawal text-white/70">{program.duration}</span>
             )}
-          </div>
+          </AnimateOnScroll>
 
           <div aria-hidden="true" className="mx-auto mt-1 w-16 h-1 rounded-full bg-secondary" />
         </div>
@@ -111,16 +116,18 @@ export default async function ProgramPage({
       {/* ── Main image ────────────────────────────────────────────────────── */}
       <section dir="rtl" className="bg-bg px-4 -mt-8 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="relative aspect-[21/9] w-full rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10">
-            <Image
-              src={program.image}
-              alt={program.title}
-              fill
-              priority
-              sizes="(min-width: 1024px) 896px, 100vw"
-              className="object-cover"
-            />
-          </div>
+          <AnimateOnScroll variants={scaleIn}>
+            <div className="relative aspect-[21/9] w-full rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10">
+              <Image
+                src={program.image}
+                alt={program.title}
+                fill
+                priority
+                sizes="(min-width: 1024px) 896px, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </AnimateOnScroll>
         </div>
       </section>
 
@@ -129,22 +136,23 @@ export default async function ProgramPage({
         <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Main */}
           <div className="lg:col-span-2 flex flex-col gap-8">
-            <div>
+            <AnimateOnScroll>
               <h2 className="font-cairo font-bold text-2xl md:text-3xl text-primary mb-5">عن البرنامج</h2>
               {program.fullDescription.split("\n\n").map((para, i) => (
                 <p key={i} className="font-tajawal text-base md:text-lg text-foreground/85 leading-[1.95] mb-4">
                   {para}
                 </p>
               ))}
-            </div>
-            <div>
+            </AnimateOnScroll>
+            <AnimateOnScroll delay={0.1}>
               <h2 className="font-cairo font-bold text-xl text-primary mb-3">لمن هذا البرنامج؟</h2>
               <p className="font-tajawal text-base text-foreground/85 leading-relaxed">{program.targetAudience}</p>
-            </div>
+            </AnimateOnScroll>
           </div>
 
           {/* Sidebar */}
           <div className="flex flex-col gap-5">
+            <AnimateOnScroll>
             <Card className="bg-white p-6 gap-4">
               <h3 className="font-cairo font-bold text-base text-foreground">تفاصيل البرنامج</h3>
               {program.duration && (
@@ -176,7 +184,9 @@ export default async function ProgramPage({
                 </span>
               </div>
             </Card>
+            </AnimateOnScroll>
 
+            <AnimateOnScroll delay={0.1}>
             {program.statusAvailable ? (
               <Card className="bg-primary/5 border border-primary/15 p-5 text-center gap-3">
                 <p className="font-cairo font-semibold text-primary text-sm">جاهزة للتسجيل؟</p>
@@ -197,6 +207,7 @@ export default async function ProgramPage({
                 </Link>
               </Card>
             )}
+            </AnimateOnScroll>
           </div>
         </div>
       </section>
@@ -275,8 +286,9 @@ export default async function ProgramPage({
           </AnimateOnScroll>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {relatedPrograms.map((rel) => (
-              <Link key={rel.id} href={`/training/${rel.id}`} className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+            {relatedPrograms.map((rel, i) => (
+              <AnimateOnScroll key={rel.id} delay={i * 0.05}>
+              <Link href={`/training/${rel.id}`} className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 <Card className="bg-white p-5 gap-3 h-full hover:shadow-md transition-shadow border border-gray-100 group-hover:border-secondary">
                   <span className={`self-start text-xs font-cairo font-semibold px-3 py-1 rounded-full ${rel.badgeClass}`}>
                     {rel.badge}
@@ -291,14 +303,15 @@ export default async function ProgramPage({
                   </Card.Header>
                 </Card>
               </Link>
+              </AnimateOnScroll>
             ))}
           </div>
 
-          <div className="flex justify-center mt-8">
+          <AnimateOnScroll delay={0.2} className="flex justify-center mt-8">
             <Link href="/training" className={buttonVariants({ variant: "outline" })}>
               عرضي كل البرامج
             </Link>
-          </div>
+          </AnimateOnScroll>
         </div>
       </section>
     </>

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { CampaignGrid } from "@/components/CampaignGrid";
 import type { CampaignCardProps } from "@/components/CampaignCard";
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { fadeInUp, scaleIn } from "@/lib/animations";
 
 // ─── Metadata ────────────────────────────────────────────────────────────────
 
@@ -49,45 +51,55 @@ export default function CampaignsPage() {
       >
         <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-4">
           {/* Eyebrow */}
-          <span className="inline-flex items-center gap-2 bg-white/10 text-white/90 font-cairo font-semibold text-xs md:text-sm px-4 py-2 rounded-full border border-white/20">
-            <span
-              aria-hidden="true"
-              className="w-2 h-2 rounded-full bg-secondary inline-block"
-            />
-            مبادرة مؤنث سالم
-          </span>
+          <AnimateOnScroll delay={0.05}>
+            <span className="inline-flex items-center gap-2 bg-white/10 text-white/90 font-cairo font-semibold text-xs md:text-sm px-4 py-2 rounded-full border border-white/20">
+              <span
+                aria-hidden="true"
+                className="w-2 h-2 rounded-full bg-secondary inline-block"
+              />
+              مبادرة مؤنث سالم
+            </span>
+          </AnimateOnScroll>
 
           {/* H1 */}
-          <h1 className="font-cairo font-bold text-3xl md:text-4xl lg:text-5xl text-white leading-snug">
-            حملاتنا
-          </h1>
+          <AnimateOnScroll delay={0.1}>
+            <h1 className="font-cairo font-bold text-3xl md:text-4xl lg:text-5xl text-white leading-snug">
+              حملاتنا
+            </h1>
+          </AnimateOnScroll>
 
           {/* Tagline */}
-          <p className="font-tajawal text-base md:text-lg text-white/80 max-w-md leading-relaxed">
-            من «بدون أجر» إلى «أمان قلمي» — حملات وطنية لدعم الصحفيات المصريات
-          </p>
+          <AnimateOnScroll delay={0.15}>
+            <p className="font-tajawal text-base md:text-lg text-white/80 max-w-md leading-relaxed">
+              من «بدون أجر» إلى «أمان قلمي» — حملات وطنية لدعم الصحفيات المصريات
+            </p>
+          </AnimateOnScroll>
 
           {/* Decorative divider */}
-          <div
-            aria-hidden="true"
-            className="w-16 h-1 rounded-full bg-secondary mt-2"
-          />
+          <AnimateOnScroll delay={0.2}>
+            <div
+              aria-hidden="true"
+              className="w-16 h-1 rounded-full bg-secondary mt-2"
+            />
+          </AnimateOnScroll>
         </div>
       </section>
 
       {/* ── Image banner ──────────────────────────────────────────────── */}
       <section dir="rtl" className="bg-bg px-4 pt-8 md:px-8 md:pt-12">
         <div className="max-w-5xl mx-auto">
-          <div className="relative aspect-[21/9] w-full rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5">
-            <Image
-              src="/images/women-solidarity.jpg"
-              alt="مجموعة نساء في تضامن"
-              fill
-              sizes="(min-width: 1024px) 1024px, 100vw"
-              className="object-cover"
-              priority
-            />
-          </div>
+          <AnimateOnScroll variants={scaleIn}>
+            <div className="relative aspect-[21/9] w-full rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5">
+              <Image
+                src="/images/women-solidarity.jpg"
+                alt="مجموعة نساء في تضامن"
+                fill
+                sizes="(min-width: 1024px) 1024px, 100vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+          </AnimateOnScroll>
         </div>
       </section>
 
@@ -97,7 +109,9 @@ export default function CampaignsPage() {
         className="bg-bg px-4 py-12 md:px-8 md:py-16 lg:px-16 lg:py-20"
       >
         <div className="max-w-6xl mx-auto">
-          <CampaignGrid campaigns={campaigns} />
+          <AnimateOnScroll variants={fadeInUp}>
+            <CampaignGrid campaigns={campaigns} />
+          </AnimateOnScroll>
         </div>
       </section>
     </>

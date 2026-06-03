@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { buttonVariants } from "@heroui/react";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { scaleIn } from "@/lib/animations";
 
 export const metadata: Metadata = {
   title: "الموارد",
@@ -149,16 +150,22 @@ export default function ResourcesPage() {
         className="bg-primary px-4 py-14 md:px-8 md:py-20 lg:px-16 lg:py-24"
       >
         <div className="max-w-3xl mx-auto text-center flex flex-col gap-4">
-          <h1 className="font-cairo font-bold text-3xl md:text-4xl lg:text-5xl text-white leading-snug">
-            الموارد
-          </h1>
-          <p className="font-tajawal text-base md:text-lg text-white/85 leading-relaxed max-w-xl mx-auto">
-            دعم قانوني ونفسي ورقمي — لأن كل امرأة تستحق الدعم الكافي
-          </p>
-          <div
-            aria-hidden="true"
-            className="mx-auto mt-2 w-16 h-1 rounded-full bg-secondary"
-          />
+          <AnimateOnScroll>
+            <h1 className="font-cairo font-bold text-3xl md:text-4xl lg:text-5xl text-white leading-snug">
+              الموارد
+            </h1>
+          </AnimateOnScroll>
+          <AnimateOnScroll delay={0.1}>
+            <p className="font-tajawal text-base md:text-lg text-white/85 leading-relaxed max-w-xl mx-auto">
+              دعم قانوني ونفسي ورقمي — لأن كل امرأة تستحق الدعم الكافي
+            </p>
+          </AnimateOnScroll>
+          <AnimateOnScroll delay={0.2} variants={scaleIn}>
+            <div
+              aria-hidden="true"
+              className="mx-auto mt-2 w-16 h-1 rounded-full bg-secondary"
+            />
+          </AnimateOnScroll>
         </div>
       </section>
 

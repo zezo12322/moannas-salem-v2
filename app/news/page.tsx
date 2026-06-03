@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { buttonVariants, Card } from "@heroui/react";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { fadeInUp } from "@/lib/animations";
 
 export const metadata: Metadata = {
   title: "الأخبار والتغطيات",
@@ -66,13 +67,19 @@ export default function NewsPage() {
       {/* Hero Banner */}
       <section className="bg-primary px-4 py-14 md:px-8 md:py-20 lg:py-24">
         <div className="max-w-3xl mx-auto text-center flex flex-col gap-4">
-          <h1 className="font-cairo font-bold text-3xl md:text-4xl lg:text-5xl text-white">
-            الأخبار والتغطيات الإعلامية
-          </h1>
-          <p className="font-tajawal text-base md:text-lg text-white/85 leading-relaxed max-w-xl mx-auto">
-            ما كتبته الصحف عن مبادرة مؤنث سالم وحملاتها
-          </p>
-          <div aria-hidden="true" className="mx-auto mt-2 w-16 h-1 rounded-full bg-secondary" />
+          <AnimateOnScroll variants={fadeInUp}>
+            <h1 className="font-cairo font-bold text-3xl md:text-4xl lg:text-5xl text-white">
+              الأخبار والتغطيات الإعلامية
+            </h1>
+          </AnimateOnScroll>
+          <AnimateOnScroll variants={fadeInUp} delay={0.1}>
+            <p className="font-tajawal text-base md:text-lg text-white/85 leading-relaxed max-w-xl mx-auto">
+              ما كتبته الصحف عن مبادرة مؤنث سالم وحملاتها
+            </p>
+          </AnimateOnScroll>
+          <AnimateOnScroll variants={fadeInUp} delay={0.2}>
+            <div aria-hidden="true" className="mx-auto mt-2 w-16 h-1 rounded-full bg-secondary" />
+          </AnimateOnScroll>
         </div>
       </section>
 
@@ -134,28 +141,32 @@ export default function NewsPage() {
 
       {/* Social CTA */}
       <section className="bg-surface px-4 py-12 md:py-16 text-center">
-        <p className="font-cairo font-bold text-xl md:text-2xl text-primary mb-2">
-          تابعينا على منصاتنا
-        </p>
-        <p className="font-tajawal text-gray-600 mb-8">آخر الأنشطة والحملات أولاً بأول</p>
-        <div className="flex justify-center gap-3 md:gap-4 flex-wrap">
-          <Link
-            href="https://www.facebook.com/muanathsalem"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonVariants({ variant: "primary" })}
-          >
-            فيسبوك
-          </Link>
-          <Link
-            href="https://www.instagram.com/muanathsalem"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonVariants({ variant: "secondary" })}
-          >
-            إنستغرام
-          </Link>
-        </div>
+        <AnimateOnScroll variants={fadeInUp}>
+          <p className="font-cairo font-bold text-xl md:text-2xl text-primary mb-2">
+            تابعينا على منصاتنا
+          </p>
+          <p className="font-tajawal text-gray-600 mb-8">آخر الأنشطة والحملات أولاً بأول</p>
+        </AnimateOnScroll>
+        <AnimateOnScroll variants={fadeInUp} delay={0.1}>
+          <div className="flex justify-center gap-3 md:gap-4 flex-wrap">
+            <Link
+              href="https://www.facebook.com/muanathsalem"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonVariants({ variant: "primary" })}
+            >
+              فيسبوك
+            </Link>
+            <Link
+              href="https://www.instagram.com/muanathsalem"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonVariants({ variant: "secondary" })}
+            >
+              إنستغرام
+            </Link>
+          </div>
+        </AnimateOnScroll>
       </section>
     </div>
   );
