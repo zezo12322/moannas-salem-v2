@@ -16,7 +16,8 @@ export function OrganizationSchema() {
     sameAs: [
       "https://www.facebook.com/muanathsalem",
       "https://www.instagram.com/muanathsalem",
-      "https://www.linkedin.com/company/muanathsalem",
+      "https://x.com/MuanathS",
+      "https://www.linkedin.com/company/%D9%85%D8%A4%D9%86%D8%AB-%D8%B3%D8%A7%D9%84%D9%85/",
     ],
     areaServed: {
       "@type": "Country",

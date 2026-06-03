@@ -26,6 +26,8 @@ const footerColumns = [
       { label: "الأخبار",        href: "/news" },
       { label: "فيسبوك",         href: "https://www.facebook.com/muanathsalem" },
       { label: "إنستاغرام",      href: "https://www.instagram.com/muanathsalem" },
+      { label: "إكس",            href: "https://x.com/MuanathS" },
+      { label: "لينكدإن",        href: "https://www.linkedin.com/company/%D9%85%D8%A4%D9%86%D8%AB-%D8%B3%D8%A7%D9%84%D9%85/" },
     ],
   },
 ];

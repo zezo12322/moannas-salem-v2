@@ -13,6 +13,7 @@ import {
   slideInRight,
   slideInLeft,
   zoomOut,
+  zoomIn,
 } from "@/lib/animations";
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -181,32 +182,32 @@ const coreValues = [
   {
     icon: <PeopleIcon />,
     title: "التعاون والشراكة",
-    desc: "العمل الحقوقي قائم على التنسيق مع كافة الأطراف",
+    desc: "العمل الحقوقي والتنموي قائم على التعاون والتنسيق بين كافة الأطراف لتحقيق الفعالية والاستدامة والأثر الإيجابي",
   },
   {
     icon: <DocumentCheckIcon />,
     title: "الحوكمة",
-    desc: "شفافية كاملة في الأنشطة والميزانيات",
+    desc: "توفير معلومات واضحة عن الأنشطة والميزانيات واستخدام الموارد، وتحمل المسؤولية عن القرارات أمام الشركاء والمستفيدات",
   },
   {
     icon: <HandshakeIcon />,
     title: "الالتزام",
-    desc: "الوفاء بما تعهدت به المؤسسة تجاه الفئات المستهدفة",
+    desc: "الثقة المتبادلة أساس النجاح، والثقة يولدها الالتزام بما تعهدت به المؤسسة قولًا وفعلًا",
   },
   {
     icon: <ScalesIcon />,
     title: "العدالة",
-    desc: "لكل مستفيدة الحق في الخدمات دون أي اعتبار",
+    desc: "لكل مستفيدة الحق في تلقي خدمات المؤسسة دون أي اعتبار",
   },
   {
     icon: <LightbulbIcon />,
     title: "الابتكار والإبداع",
-    desc: "تشجيع الأفكار المميزة ومكافأة التجديد",
+    desc: "خلق فرص للإبداع وتشجيع الأفكار المميزة ومكافأة التجديد والتطوير",
   },
   {
     icon: <StarIcon />,
-    title: "المهنية والتطوير",
-    desc: "عمل قائم على منهجية مهنية واضحة",
+    title: "المهنية",
+    desc: "عمل قائم على منهجية مهنية واضحة وسلسة معروفة للجميع",
   },
 ];
 
@@ -214,7 +215,71 @@ const strategicGoals = [
   "مشاركة فاعلة للنساء في الحياة الاقتصادية وحماية حقوق النساء العاملات",
   "مشاركة نساء مصر في عملية صنع القرار في الفضاءين العام والخاص على أساس العدالة والمساواة",
   "ضمان حماية النساء والفتيات من كافة أشكال العنف المبني على النوع الاجتماعي",
-  "تتمتع المؤسسة بقدرات فعالة وبنية مؤسسية متماسكة للقيام بدورها الطليعي في المجتمع",
+  "تمتع المؤسسة بقدرات فعالة وبنية مؤسسية متماسكة للقيام بدورها الطليعي في المجتمع",
+];
+
+// بطاقة تعريف — الحقائق القانونية والتسجيلية
+const identityFacts = [
+  { label: "الاسم القانوني", value: "مؤسسة مؤنث سالم للتنمية" },
+  { label: "رئيسة مجلس الأمناء", value: "أسماء فتحي" },
+  {
+    label: "النطاق الجغرافي",
+    value: "جمهورية مصر العربية مع تعاون إقليمي ودولي",
+  },
+  { label: "الإطار الزمني للخطة الاستراتيجية", value: "2025–2030" },
+];
+
+// رحلتنا — الخط الزمني للمؤسسة
+const journey = [
+  {
+    period: "الربع الأخير 2022",
+    text: "انطلاق المبادرة تطوعيًا على يد مجموعة من الشابات المصريات لتمكين النساء، بعد لمس التمييز الذي تتعرض له الصحفيات أثناء عملهن",
+  },
+  {
+    period: "منتصف 2023",
+    text: "الاعتماد على جهود العضوات لتسليط الضوء على انتهاك حقوق النساء العاملات في بيئة العمل، وحملة مطالب أمام انتخابات نقابة الصحفيين",
+  },
+  {
+    period: "2023",
+    text: "حملة «مش ذنبي إني أم» — توثيق أكثر من 40 شهادة لنساء معنّفات، وتشكيل وحدة للدعم النفسي",
+  },
+  {
+    period: "نهاية 2023",
+    text: "التوجه للتمكين الاقتصادي — دورات تدريبية للصحفيات والنساء العاملات (الكتابة الإبداعية، قضايا المناخ، اتفاقية العمل الدولية 190، اللغة الحساسة للنوع الاجتماعي)",
+  },
+  {
+    period: "منتصف 2024",
+    text: "إعادة التنظيم للعمل ضمن فرق ممتدة في محافظات مصر المختلفة",
+  },
+  {
+    period: "نوفمبر 2024",
+    text: "تدريبات تمكين الخريجات الجدد بدءًا بخريجات كلية الإعلام",
+  },
+  {
+    period: "نهاية 2024",
+    text: "الترخيص الرسمي كمؤسسة تحت ولاية وزارة التضامن الاجتماعي",
+  },
+];
+
+// برامجنا — البرامج الأربعة
+const programs = [
+  {
+    title: "برنامج التمكين الاقتصادي للنساء",
+    desc: "تعزيز حضور النساء في الاقتصاد وحماية حقوقهن للمساهمة في الحد من البطالة والفقر في أوساطهن",
+  },
+  {
+    title:
+      "برنامج تمكين المرأة في مراكز صنع القرار وتعزيز أجندة المرأة والسلام والأمن",
+    desc: "تعزيز حضور النساء في كافة مراكز صنع القرار في الحيزين العام والخاص",
+  },
+  {
+    title: "برنامج الدعم النفسي والقانوني للنساء ومكافحة العنف ضد المرأة",
+    desc: "تقديم خدمات الدعم النفسي والاجتماعي والقانوني للنساء لضمان ألا يُتركن خلف الركب",
+  },
+  {
+    title: "برنامج تعزيز البنية المؤسسية لمؤنث سالم",
+    desc: "تطوير قدرات المؤسسة وتحويلها لمؤسسة تعلّمية تستجيب لاحتياجات النساء في كافة الظروف",
+  },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -332,6 +397,89 @@ export default function AboutClient() {
               />
             </div>
           </AnimateOnScroll>
+
+          {/* بطاقة تعريف — Legal / registration fact strip */}
+          <AnimateOnScroll variants={fadeInUp} delay={0.1} className="mt-4">
+            <Card className="bg-white border-r-4 border-secondary p-6 md:p-8 gap-6">
+              <div className="flex items-center gap-3">
+                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary shrink-0">
+                  <DocumentCheckIcon />
+                </span>
+                <Card.Title className="font-cairo font-bold text-lg md:text-xl text-primary">
+                  بطاقة تعريف
+                </Card.Title>
+              </div>
+
+              {/* Legal statement */}
+              <p className="font-tajawal text-sm md:text-base text-gray-700 leading-[1.9]">
+                مؤسسة أهلية غير ربحية مسجلة لدى وزارة التضامن الاجتماعي
+                (مديرية التضامن الاجتماعي بالجيزة) طبقًا لقانون تنظيم ممارسة
+                العمل الأهلي رقم 149 لسنة 2019.
+              </p>
+
+              {/* Fact rows */}
+              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                {identityFacts.map((fact) => (
+                  <div
+                    key={fact.label}
+                    className="flex flex-col gap-1 border-t border-black/5 pt-3"
+                  >
+                    <dt className="font-cairo font-semibold text-xs md:text-sm text-secondary">
+                      {fact.label}
+                    </dt>
+                    <dd className="font-tajawal text-sm md:text-base text-foreground/90 leading-relaxed">
+                      {fact.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </Card>
+          </AnimateOnScroll>
+        </div>
+      </section>
+
+      {/* ── 2b. JOURNEY TIMELINE (رحلتنا) ────────────────────────────────── */}
+      <section dir="rtl" className="bg-surface px-4 py-14 md:py-20 lg:py-28">
+        <div className="max-w-3xl mx-auto flex flex-col gap-12">
+          {/* Section heading */}
+          <AnimateOnScroll className="text-center">
+            <h2 className="font-cairo font-bold text-2xl md:text-3xl lg:text-4xl text-primary">
+              رحلتنا
+            </h2>
+            <div
+              aria-hidden="true"
+              className="mx-auto mt-3 w-16 h-1 rounded-full bg-secondary"
+            />
+          </AnimateOnScroll>
+
+          {/* Vertical timeline */}
+          <motion.ol
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="relative flex flex-col gap-8 border-r-2 border-secondary/30 pr-6 md:pr-10"
+          >
+            {journey.map((item, index) => (
+              <motion.li
+                key={item.period}
+                variants={index % 2 === 0 ? slideInRight : slideInLeft}
+                className="relative"
+              >
+                {/* Timeline dot on the right rail (RTL start side) */}
+                <span
+                  aria-hidden="true"
+                  className="absolute -right-[31px] md:-right-[43px] top-1.5 w-3.5 h-3.5 rounded-full bg-secondary ring-4 ring-surface"
+                />
+                <p className="font-cairo font-bold text-sm md:text-base text-secondary mb-1.5">
+                  {item.period}
+                </p>
+                <p className="font-tajawal text-base md:text-lg text-gray-700 leading-[1.9]">
+                  {item.text}
+                </p>
+              </motion.li>
+            ))}
+          </motion.ol>
         </div>
       </section>
 
@@ -438,6 +586,56 @@ export default function AboutClient() {
         </div>
       </section>
 
+      {/* ── 4b. PROGRAMS (برامجنا) ───────────────────────────────────────── */}
+      <section dir="rtl" className="bg-surface px-4 py-14 md:py-20 lg:py-28">
+        <div className="max-w-5xl mx-auto flex flex-col gap-12">
+          {/* Section heading */}
+          <AnimateOnScroll className="text-center">
+            <h2 className="font-cairo font-bold text-2xl md:text-3xl lg:text-4xl text-primary">
+              برامجنا
+            </h2>
+            <div
+              aria-hidden="true"
+              className="mx-auto mt-3 w-16 h-1 rounded-full bg-secondary"
+            />
+          </AnimateOnScroll>
+
+          {/* Programs grid — 1 col mobile, 2 cols desktop */}
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6"
+          >
+            {programs.map((program, index) => (
+              <motion.div
+                key={program.title}
+                variants={index % 2 === 0 ? slideInRight : slideInLeft}
+                className="h-full"
+              >
+                <Card className="bg-white border-t-4 border-primary p-7 gap-4 h-full hover:shadow-md transition-shadow hover-lift">
+                  <div className="flex items-start gap-4">
+                    <span
+                      aria-hidden="true"
+                      className="font-cairo font-bold text-2xl md:text-3xl text-secondary leading-none shrink-0 tabular-nums mt-0.5"
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <Card.Title className="font-cairo font-bold text-base md:text-lg text-primary leading-snug">
+                      {program.title}
+                    </Card.Title>
+                  </div>
+                  <p className="font-tajawal text-foreground/85 text-sm md:text-base leading-[1.9]">
+                    {program.desc}
+                  </p>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── 5. STRATEGIC GOALS ───────────────────────────────────────────── */}
       <section dir="rtl" className="relative overflow-hidden bg-primary px-4 py-14 md:py-20 lg:py-28">
         <AuroraBackground intensity="normal" />
@@ -451,6 +649,18 @@ export default function AboutClient() {
               aria-hidden="true"
               className="mx-auto mt-3 w-16 h-1 rounded-full bg-secondary"
             />
+            {/* الهدف العام — overarching goal badge */}
+            <div className="mt-6 flex justify-center">
+              <AnimateOnScroll variants={zoomIn}>
+                <span className="inline-flex items-center gap-2 bg-white/10 text-white font-cairo font-semibold text-sm md:text-base px-5 py-2.5 rounded-full border border-white/20">
+                  <span
+                    aria-hidden="true"
+                    className="w-2 h-2 rounded-full bg-secondary inline-block"
+                  />
+                  الهدف العام: تحقيق مشاركة فعالة للنساء في الفضاءين العام والخاص
+                </span>
+              </AnimateOnScroll>
+            </div>
           </AnimateOnScroll>
 
           {/* Goals list */}

@@ -167,6 +167,22 @@ export default function NewsPage() {
             >
               إنستغرام
             </Link>
+            <Link
+              href="https://x.com/MuanathS"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${buttonVariants({ variant: "primary" })} sheen group`}
+            >
+              إكس
+            </Link>
+            <Link
+              href="https://www.linkedin.com/company/%D9%85%D8%A4%D9%86%D8%AB-%D8%B3%D8%A7%D9%84%D9%85/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${buttonVariants({ variant: "secondary" })} sheen group`}
+            >
+              لينكدإن
+            </Link>
           </div>
         </AnimateOnScroll>
       </section>
