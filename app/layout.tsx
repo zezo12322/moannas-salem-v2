@@ -67,6 +67,9 @@ export default function RootLayout({
     <html
       lang="ar"
       dir="rtl"
+      // يخلّي Next.js يرجع لأعلى الصفحة فورًا عند التنقل بدل سكرول ناعم
+      // يكنس كل عناصر الصفحة ويفعّل أنيميشن الظهور كلها مرة واحدة
+      data-scroll-behavior="smooth"
       className={`${ibmPlex.variable} ${cairo.variable} ${inter.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-bg overflow-x-hidden">
