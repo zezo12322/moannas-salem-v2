@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { buttonVariants } from "@heroui/react";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { AuroraBackground } from "@/components/AuroraBackground";
 import { scaleIn } from "@/lib/animations";
 
 export const metadata: Metadata = {
@@ -147,9 +148,10 @@ export default function ResourcesPage() {
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section
         dir="rtl"
-        className="bg-primary px-4 py-14 md:px-8 md:py-20 lg:px-16 lg:py-24"
+        className="relative overflow-hidden bg-primary px-4 py-14 md:px-8 md:py-20 lg:px-16 lg:py-24"
       >
-        <div className="max-w-3xl mx-auto text-center flex flex-col gap-4">
+        <AuroraBackground />
+        <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col gap-4">
           <AnimateOnScroll>
             <h1 className="font-cairo font-bold text-3xl md:text-4xl lg:text-5xl text-white leading-snug">
               الموارد
@@ -201,7 +203,7 @@ export default function ResourcesPage() {
           <AnimateOnScroll delay={0.1}>
             <Link
               href="/contact"
-              className={buttonVariants({ size: "lg", variant: "primary" })}
+              className={`${buttonVariants({ size: "lg", variant: "primary" })} sheen group`}
             >
               تواصلي معنا الآن
             </Link>

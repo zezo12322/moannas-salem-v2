@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { buttonVariants, Card } from "@heroui/react";
 import { programs, getProgramById } from "@/lib/programs";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { AuroraBackground } from "@/components/AuroraBackground";
 import { scaleIn } from "@/lib/animations";
 import TrainingRegistrationForm from "@/app/training/TrainingRegistrationForm";
 
@@ -63,8 +64,9 @@ export default async function ProgramPage({
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section dir="rtl" className="bg-primary px-4 py-14 md:px-8 md:py-20 lg:py-24">
-        <div className="max-w-4xl mx-auto flex flex-col gap-5 text-center">
+      <section dir="rtl" className="relative overflow-hidden bg-primary px-4 py-14 md:px-8 md:py-20 lg:py-24">
+        <AuroraBackground />
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col gap-5 text-center">
           {/* Breadcrumb */}
           <AnimateOnScroll>
             <nav aria-label="مسار التنقل" className="flex justify-center gap-2 font-tajawal text-sm text-white/60">
@@ -124,7 +126,7 @@ export default async function ProgramPage({
                 fill
                 priority
                 sizes="(min-width: 1024px) 896px, 100vw"
-                className="object-cover"
+                className="object-cover hero-bg-zoom"
               />
             </div>
           </AnimateOnScroll>
@@ -153,7 +155,7 @@ export default async function ProgramPage({
           {/* Sidebar */}
           <div className="flex flex-col gap-5">
             <AnimateOnScroll>
-            <Card className="bg-white p-6 gap-4">
+            <Card className="bg-white p-6 gap-4 hover-lift">
               <h3 className="font-cairo font-bold text-base text-foreground">تفاصيل البرنامج</h3>
               {program.duration && (
                 <div className="flex items-center gap-3">
@@ -188,18 +190,18 @@ export default async function ProgramPage({
 
             <AnimateOnScroll delay={0.1}>
             {program.statusAvailable ? (
-              <Card className="bg-primary/5 border border-primary/15 p-5 text-center gap-3">
+              <Card className="bg-primary/5 border border-primary/15 p-5 text-center gap-3 hover-lift">
                 <p className="font-cairo font-semibold text-primary text-sm">جاهزة للتسجيل؟</p>
                 <p className="font-tajawal text-muted text-xs">املئي النموذج أدناه وسنتواصل معك بالتفاصيل</p>
                 <a
                   href="#register"
-                  className={buttonVariants({ size: "sm", variant: "primary" })}
+                  className={`${buttonVariants({ size: "sm", variant: "primary" })} sheen group`}
                 >
                   سجلي الآن
                 </a>
               </Card>
             ) : (
-              <Card className="bg-amber-50 border border-amber-200 p-5 text-center gap-3">
+              <Card className="bg-amber-50 border border-amber-200 p-5 text-center gap-3 hover-lift">
                 <p className="font-cairo font-semibold text-amber-800 text-sm">قريباً</p>
                 <p className="font-tajawal text-amber-700 text-xs">سجلي اهتمامك وسنُعلمك عند الإطلاق</p>
                 <Link href="/contact" className={buttonVariants({ size: "sm", variant: "outline" })}>

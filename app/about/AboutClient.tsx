@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { buttonVariants, Card } from "@heroui/react";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { AuroraBackground } from "@/components/AuroraBackground";
 import {
   fadeInUp,
   staggerContainer,
@@ -221,8 +222,9 @@ export default function AboutClient() {
   return (
     <>
       {/* ── 1. HERO BANNER ───────────────────────────────────────────────── */}
-      <section dir="rtl" className="bg-primary px-4 py-16 md:py-24">
-        <div className="max-w-5xl mx-auto">
+      <section dir="rtl" className="relative overflow-hidden bg-primary px-4 py-16 md:py-24">
+        <AuroraBackground intensity="normal" />
+        <div className="relative z-10 max-w-5xl mx-auto">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -416,7 +418,7 @@ export default function AboutClient() {
           >
             {coreValues.map((value) => (
               <motion.div key={value.title} variants={scaleIn} className="h-full">
-                <Card variant="default" className="p-6 hover:shadow-md transition-shadow h-full">
+                <Card variant="default" className="p-6 hover:shadow-md transition-shadow h-full hover-lift">
                   <span className="flex items-center justify-center w-11 h-11 rounded-full bg-secondary/15 text-secondary shrink-0">
                     {value.icon}
                   </span>
@@ -436,8 +438,9 @@ export default function AboutClient() {
       </section>
 
       {/* ── 5. STRATEGIC GOALS ───────────────────────────────────────────── */}
-      <section dir="rtl" className="bg-primary px-4 py-14 md:py-20 lg:py-28">
-        <div className="max-w-4xl mx-auto flex flex-col gap-12">
+      <section dir="rtl" className="relative overflow-hidden bg-primary px-4 py-14 md:py-20 lg:py-28">
+        <AuroraBackground intensity="normal" />
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col gap-12">
           {/* Section heading */}
           <AnimateOnScroll className="text-center">
             <h2 className="font-cairo font-bold text-2xl md:text-3xl lg:text-4xl text-white">
@@ -508,7 +511,7 @@ export default function AboutClient() {
           <AnimateOnScroll delay={0.2}>
             <Link
               href="/contact"
-              className={buttonVariants({ size: "lg", variant: "primary" })}
+              className={buttonVariants({ size: "lg", variant: "primary" }) + " sheen group animate-pulse-ring"}
             >
               شاركي معنا
             </Link>

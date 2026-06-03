@@ -11,9 +11,9 @@ function ProgramCard({ program }: { program: Program }) {
     <motion.div variants={fadeInUp} className="h-full">
       <Link
         href={`/training/${program.id}`}
-        className="block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-2xl group"
+        className="sheen block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-2xl group"
       >
-      <Card className="bg-white p-6 gap-4 h-full hover:shadow-md transition-shadow border border-gray-100 group-hover:border-secondary">
+      <Card className="bg-white p-6 gap-4 h-full hover-lift hover:shadow-md transition-shadow border border-gray-100 group-hover:border-secondary">
         {/* Badge + status */}
         <div className="flex items-start justify-between gap-2 flex-wrap">
           <span

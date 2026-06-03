@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { AuroraBackground } from "@/components/AuroraBackground";
 import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
@@ -117,8 +118,9 @@ export default function ContactPage() {
   return (
     <div dir="rtl" className="bg-bg min-h-screen">
       {/* ── Hero ── */}
-      <section className="bg-primary px-4 py-12 md:px-8 md:py-16">
-        <div className="max-w-5xl mx-auto text-center">
+      <section className="relative overflow-hidden bg-primary px-4 py-12 md:px-8 md:py-16">
+        <AuroraBackground />
+        <div className="relative z-10 max-w-5xl mx-auto text-center">
           <AnimateOnScroll>
             <h1 className="font-cairo font-bold text-3xl md:text-4xl lg:text-5xl text-white">
               تواصلي معنا
@@ -146,7 +148,7 @@ export default function ContactPage() {
           {/* Left column — info */}
           <div className="flex flex-col gap-6">
             <AnimateOnScroll delay={0.1}>
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+              <div className="hover-lift bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
                 <h2 className="font-cairo font-bold text-xl md:text-2xl text-gray-900 mb-6">
                   معلومات التواصل
                 </h2>
@@ -179,7 +181,7 @@ export default function ContactPage() {
 
             {/* Social media */}
             <AnimateOnScroll delay={0.2}>
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+              <div className="hover-lift bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <h3 className="font-cairo font-bold text-base text-gray-900 mb-4">
                   تابعينا على وسائل التواصل
                 </h3>

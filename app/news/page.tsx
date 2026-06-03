@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { buttonVariants, Card } from "@heroui/react";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { AuroraBackground } from "@/components/AuroraBackground";
 import { fadeInUp } from "@/lib/animations";
 
 export const metadata: Metadata = {
@@ -65,8 +66,9 @@ export default function NewsPage() {
   return (
     <div dir="rtl">
       {/* Hero Banner */}
-      <section className="bg-primary px-4 py-14 md:px-8 md:py-20 lg:py-24">
-        <div className="max-w-3xl mx-auto text-center flex flex-col gap-4">
+      <section className="relative overflow-hidden bg-primary px-4 py-14 md:px-8 md:py-20 lg:py-24">
+        <AuroraBackground />
+        <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col gap-4">
           <AnimateOnScroll variants={fadeInUp}>
             <h1 className="font-cairo font-bold text-3xl md:text-4xl lg:text-5xl text-white">
               الأخبار والتغطيات الإعلامية
@@ -93,7 +95,7 @@ export default function NewsPage() {
                 alt="صحفية تكتب في دفتر ملاحظات"
                 fill
                 sizes="(min-width: 1024px) 1024px, 100vw"
-                className="object-cover"
+                className="object-cover hero-bg-zoom"
               />
             </div>
           </AnimateOnScroll>
@@ -111,7 +113,7 @@ export default function NewsPage() {
                 rel="noopener noreferrer"
                 className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-2xl"
               >
-                <Card className="bg-white p-6 md:p-7 hover:shadow-md transition-shadow border border-gray-100 group-hover:border-secondary">
+                <Card className="bg-white p-6 md:p-7 hover-lift hover:shadow-md transition-shadow border border-gray-100 group-hover:border-secondary">
                   <div className="flex items-center justify-between gap-3">
                     <span className="font-cairo font-semibold text-xs md:text-sm text-accent uppercase tracking-wide">
                       {item.outlet}
@@ -153,7 +155,7 @@ export default function NewsPage() {
               href="https://www.facebook.com/muanathsalem"
               target="_blank"
               rel="noopener noreferrer"
-              className={buttonVariants({ variant: "primary" })}
+              className={`${buttonVariants({ variant: "primary" })} sheen group`}
             >
               فيسبوك
             </Link>
@@ -161,7 +163,7 @@ export default function NewsPage() {
               href="https://www.instagram.com/muanathsalem"
               target="_blank"
               rel="noopener noreferrer"
-              className={buttonVariants({ variant: "secondary" })}
+              className={`${buttonVariants({ variant: "secondary" })} sheen group`}
             >
               إنستغرام
             </Link>

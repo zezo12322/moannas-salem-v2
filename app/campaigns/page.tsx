@@ -3,6 +3,7 @@ import Image from "next/image";
 import { CampaignGrid } from "@/components/CampaignGrid";
 import type { CampaignCardProps } from "@/components/CampaignCard";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { AuroraBackground } from "@/components/AuroraBackground";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 
 // ─── Metadata ────────────────────────────────────────────────────────────────
@@ -47,9 +48,10 @@ export default function CampaignsPage() {
       {/* ── Hero Banner ───────────────────────────────────────────────── */}
       <section
         dir="rtl"
-        className="bg-primary px-4 py-14 md:px-8 md:py-20 lg:px-16"
+        className="relative overflow-hidden bg-primary px-4 py-14 md:px-8 md:py-20 lg:px-16"
       >
-        <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-4">
+        <AuroraBackground intensity="normal" />
+        <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center text-center gap-4">
           {/* Eyebrow */}
           <AnimateOnScroll delay={0.05}>
             <span className="inline-flex items-center gap-2 bg-white/10 text-white/90 font-cairo font-semibold text-xs md:text-sm px-4 py-2 rounded-full border border-white/20">
@@ -95,7 +97,7 @@ export default function CampaignsPage() {
                 alt="مجموعة نساء في تضامن"
                 fill
                 sizes="(min-width: 1024px) 1024px, 100vw"
-                className="object-cover"
+                className="object-cover hero-bg-zoom"
                 priority
               />
             </div>

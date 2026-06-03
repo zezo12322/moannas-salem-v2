@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { AuroraBackground } from "@/components/AuroraBackground";
 import { scaleIn } from "@/lib/animations";
 
 export const metadata: Metadata = {
@@ -125,9 +126,11 @@ export default function PsychologicalPage() {
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section
         dir="rtl"
-        className="bg-accent px-4 py-14 md:px-8 md:py-20 lg:px-16 lg:py-24"
+        className="relative overflow-hidden bg-accent px-4 py-14 md:px-8 md:py-20 lg:px-16 lg:py-24"
       >
-        <div className="max-w-3xl mx-auto text-center flex flex-col gap-4">
+        {/* mesh/grid متظبطين للخلفيات الغامقة — الـ hero الخوخي الفاتح ياخد blobs فقط */}
+        <AuroraBackground intensity="soft" mesh={false} grid={false} />
+        <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col gap-4">
           {/* Breadcrumb */}
           <AnimateOnScroll>
             <nav
@@ -171,7 +174,7 @@ export default function PsychologicalPage() {
                 alt="جلسة دعم نفسي هادئة"
                 fill
                 sizes="(min-width: 768px) 768px, 100vw"
-                className="object-cover"
+                className="object-cover hero-bg-zoom"
               />
             </div>
           </AnimateOnScroll>
@@ -247,7 +250,7 @@ export default function PsychologicalPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
             {services.map((service, i) => (
               <AnimateOnScroll key={service.title} delay={i * 0.08}>
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-6 flex flex-col gap-4">
+                <div className="hover-lift bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-6 flex flex-col gap-4">
                   <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-accent/10 text-accent shrink-0">
                     {service.icon}
                   </span>
@@ -319,11 +322,12 @@ export default function PsychologicalPage() {
         <div className="max-w-3xl mx-auto">
           <AnimateOnScroll>
             <div
-              className="bg-primary rounded-3xl px-6 py-8 md:px-10 md:py-10 flex flex-col items-start gap-4"
+              className="relative overflow-hidden bg-primary rounded-3xl px-6 py-8 md:px-10 md:py-10 flex flex-col items-start gap-4"
               role="note"
               aria-label="وعد السرية"
             >
-              <div className="flex items-center gap-3">
+              <AuroraBackground intensity="soft" blobs={false} />
+              <div className="relative z-10 flex items-center gap-3">
                 <span
                   aria-hidden="true"
                   className="flex items-center justify-center w-12 h-12 rounded-full bg-white/15 text-white shrink-0"
@@ -345,7 +349,7 @@ export default function PsychologicalPage() {
                   وعدنا بالسرية
                 </h2>
               </div>
-              <p className="font-tajawal text-white/90 text-base leading-loose">
+              <p className="relative z-10 font-tajawal text-white/90 text-base leading-loose">
                 جميع المعلومات التي تشاركينها معنا تظل{" "}
                 <strong className="font-cairo font-semibold text-secondary">سرية تماماً</strong>{" "}
                 ولن تُشارك مع أي جهة خارجية دون موافقتك الصريحة.
@@ -372,7 +376,7 @@ export default function PsychologicalPage() {
           <AnimateOnScroll delay={0.1}>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center min-h-[52px] px-10 py-3 rounded-xl bg-accent text-white font-cairo font-bold text-base hover:bg-accent/90 transition-colors shadow-md"
+              className="sheen group animate-pulse-ring inline-flex items-center justify-center min-h-[52px] px-10 py-3 rounded-xl bg-accent text-white font-cairo font-bold text-base hover:bg-accent/90 transition-colors shadow-md"
             >
               تواصلي مع وحدة الدعم النفسي
             </Link>

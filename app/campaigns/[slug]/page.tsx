@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { buttonVariants, Card } from "@heroui/react";
 import { campaigns, getCampaignBySlug } from "@/lib/campaigns";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { AuroraBackground } from "@/components/AuroraBackground";
 import { fadeInUp } from "@/lib/animations";
 
 export function generateStaticParams() {
@@ -50,8 +51,9 @@ export default async function CampaignPage({
   return (
     <>
       {/* Hero */}
-      <section dir="rtl" className="bg-primary px-4 py-14 md:px-8 md:py-20 lg:py-24">
-        <AnimateOnScroll variants={fadeInUp}>
+      <section dir="rtl" className="relative overflow-hidden bg-primary px-4 py-14 md:px-8 md:py-20 lg:py-24">
+        <AuroraBackground intensity="normal" />
+        <AnimateOnScroll variants={fadeInUp} className="relative z-10">
           <div className="max-w-4xl mx-auto flex flex-col gap-5 text-center">
             <nav aria-label="مسار التنقل" className="flex justify-center gap-2 font-tajawal text-sm text-white/60">
               <Link href="/campaigns" className="hover:text-white transition-colors">الحملات</Link>
@@ -91,7 +93,7 @@ export default async function CampaignPage({
         <div className="max-w-4xl mx-auto">
           <AnimateOnScroll variants={fadeInUp}>
             <div className="relative aspect-[21/9] w-full rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10">
-              <Image src={campaign.image} alt={campaign.title} fill priority sizes="(min-width: 1024px) 896px, 100vw" className="object-cover" />
+              <Image src={campaign.image} alt={campaign.title} fill priority sizes="(min-width: 1024px) 896px, 100vw" className="object-cover hero-bg-zoom" />
             </div>
           </AnimateOnScroll>
         </div>
@@ -221,10 +223,11 @@ export default async function CampaignPage({
       {/* CTA */}
       <section
         dir="rtl"
-        className="px-4 py-14 md:py-20"
+        className="relative overflow-hidden px-4 py-14 md:py-20"
         style={{ background: "linear-gradient(135deg, #3A1A4A 0%, #4B245E 60%, #7B3F8E 100%)" }}
       >
-        <div className="max-w-3xl mx-auto flex flex-col items-center text-center gap-6">
+        <AuroraBackground intensity="normal" />
+        <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center gap-6">
           <AnimateOnScroll variants={fadeInUp}>
             <h2 className="font-cairo font-bold text-2xl md:text-3xl text-white leading-snug">هل تريدين الانضمام أو الدعم؟</h2>
           </AnimateOnScroll>
@@ -235,8 +238,8 @@ export default async function CampaignPage({
           </AnimateOnScroll>
           <AnimateOnScroll variants={fadeInUp} delay={0.2}>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link href="/contact" className={buttonVariants({ size: "lg", variant: "secondary" })}>تواصلي معنا</Link>
-              <Link href="/campaigns" className={buttonVariants({ size: "lg", variant: "outline" }) + " !text-white !border-white/40 hover:!bg-white/10"}>الحملات الأخرى</Link>
+              <Link href="/contact" className={buttonVariants({ size: "lg", variant: "secondary" }) + " sheen group animate-pulse-ring"}>تواصلي معنا</Link>
+              <Link href="/campaigns" className={buttonVariants({ size: "lg", variant: "outline" }) + " sheen group !text-white !border-white/40 hover:!bg-white/10"}>الحملات الأخرى</Link>
             </div>
           </AnimateOnScroll>
         </div>

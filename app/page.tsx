@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { buttonVariants, Card } from "@heroui/react";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { AuroraBackground } from "@/components/AuroraBackground";
 import {
   fadeInUp,
   staggerContainer,
@@ -203,6 +204,8 @@ export default function HomePage() {
         dir="rtl"
         className="relative overflow-hidden bg-bg"
       >
+        {/* mesh/grid متظبطين للخلفيات الغامقة — الـ hero الفاتح ياخد blobs فقط */}
+        <AuroraBackground intensity="soft" mesh={false} grid={false} conic />
         <div className="relative z-10 max-w-6xl mx-auto px-4 py-8 md:px-8 md:py-16 lg:px-16 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 lg:gap-14 items-center">
           {/* Text column — text first on mobile so CTA is above the fold */}
           <motion.div
@@ -244,7 +247,7 @@ export default function HomePage() {
             >
               <Link
                 href="/resources"
-                className={buttonVariants({ size: "lg", variant: "primary" })}
+                className={`${buttonVariants({ size: "lg", variant: "primary" })} sheen group animate-pulse-ring`}
               >
                 اعرفي حقوقك
               </Link>
@@ -285,7 +288,7 @@ export default function HomePage() {
                 priority
                 loading="eager"
                 sizes="(min-width: 1024px) 50vw, 90vw"
-                className="object-cover"
+                className="object-cover hero-bg-zoom"
               />
             </div>
           </motion.div>
@@ -314,7 +317,7 @@ export default function HomePage() {
           >
             {pillars.map((pillar) => (
               <motion.div key={pillar.title} variants={fadeInUp} className="h-full">
-                <Card className="bg-white p-5 md:p-6 hover:shadow-md transition-shadow h-full">
+                <Card className="bg-white p-5 md:p-6 hover:shadow-md transition-shadow h-full hover-lift">
                   <span className="flex items-center justify-center w-12 h-12 rounded-full bg-secondary/15 text-secondary shrink-0">
                     {pillar.icon}
                   </span>
@@ -417,16 +420,17 @@ export default function HomePage() {
       {/* ── 6. CTA BANNER ────────────────────────────────────────────────── */}
       <section
         dir="rtl"
-        className="gradient-animate px-4 py-12 md:px-8 md:py-16 lg:px-16 lg:py-20"
+        className="gradient-animate relative overflow-hidden px-4 py-12 md:px-8 md:py-16 lg:px-16 lg:py-20"
         style={{
           background:
             "linear-gradient(135deg, #3A1A4A 0%, #4B245E 60%, #7B3F8E 100%)",
         }}
       >
-        <div className="max-w-3xl mx-auto flex flex-col items-center text-center gap-6">
+        <AuroraBackground conic intensity="bold" />
+        <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center gap-6">
           <AnimateOnScroll>
             <h2 className="font-cairo font-bold text-2xl md:text-3xl lg:text-4xl text-white leading-snug">
-              هل تحتاجين مساعدة أو دعماً؟
+              هل تحتاجين مساعدة أو <span className="text-shimmer">دعماً</span>؟
             </h2>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.1}>
@@ -437,7 +441,7 @@ export default function HomePage() {
           <AnimateOnScroll delay={0.2}>
             <Link
               href="/contact"
-              className={buttonVariants({ size: "lg", variant: "secondary" })}
+              className={`${buttonVariants({ size: "lg", variant: "secondary" })} sheen group`}
             >
               تواصلي معنا الآن
             </Link>

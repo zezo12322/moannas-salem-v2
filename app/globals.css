@@ -132,3 +132,138 @@ a, button, [role="button"] {
   transform: scale(0.96);
   opacity: 0.9;
 }
+
+/* ====================================
+   ANIMATED BACKGROUNDS (heroes / dark bands)
+   purple/rose/peach palette
+   ==================================== */
+
+/* Living mesh-gradient — three radial blobs panning around */
+@keyframes mesh-pan {
+  0%   { background-position: 0% 0%, 100% 0%, 50% 100%; }
+  50%  { background-position: 100% 50%, 0% 100%, 50% 0%; }
+  100% { background-position: 0% 0%, 100% 0%, 50% 100%; }
+}
+.bg-aurora-mesh {
+  background-image:
+    radial-gradient(38% 48% at 22% 30%, rgba(242, 182, 160, 0.35), transparent 70%),
+    radial-gradient(44% 52% at 80% 26%, rgba(198, 107, 125, 0.40), transparent 70%),
+    radial-gradient(50% 58% at 50% 92%, rgba(58, 26, 74, 0.55), transparent 72%);
+  background-size: 200% 200%, 220% 220%, 240% 240%;
+  background-repeat: no-repeat;
+  animation: mesh-pan 24s ease-in-out infinite;
+  will-change: background-position;
+}
+
+/* Organic morphing blob */
+@keyframes blob-morph {
+  0%, 100% { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+  33%      { border-radius: 60% 40% 34% 66% / 63% 35% 65% 37%; transform: translate3d(4%, -5%, 0) rotate(45deg) scale(1.12); }
+  66%      { border-radius: 35% 65% 55% 45% / 48% 62% 38% 52%; transform: translate3d(-4%, 4%, 0) rotate(-35deg) scale(0.92); }
+}
+.animate-blob { animation: blob-morph 18s ease-in-out infinite; will-change: transform, border-radius; }
+
+/* Drifting dot grid overlay */
+@keyframes grid-pan {
+  from { background-position: 0 0; }
+  to   { background-position: 26px 26px; }
+}
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+  background-size: 26px 26px;
+  animation: grid-pan 7s linear infinite;
+}
+
+/* Rotating conic spotlight */
+@keyframes conic-spin { to { transform: rotate(360deg); } }
+.bg-conic-spotlight {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(242, 182, 160, 0.16) 60deg,
+    transparent 140deg,
+    rgba(198, 107, 125, 0.16) 220deg,
+    transparent 300deg
+  );
+  animation: conic-spin 28s linear infinite;
+  will-change: transform;
+}
+
+/* ====================================
+   MICRO-INTERACTIONS
+   ==================================== */
+
+/* Gradient text shimmer (rose ↔ peach) */
+@keyframes shimmer {
+  from { background-position: -150% 0; }
+  to   { background-position: 250% 0; }
+}
+.text-shimmer {
+  background: linear-gradient(100deg, #C66B7D 20%, #F2B6A0 40%, #C66B7D 60%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer 5s linear infinite;
+}
+
+/* Sheen swipe — apply to a `relative overflow-hidden` element */
+@keyframes sheen {
+  0%   { transform: translateX(-130%) skewX(-18deg); opacity: 0; }
+  18%  { opacity: 0.55; }
+  60%, 100% { transform: translateX(230%) skewX(-18deg); opacity: 0; }
+}
+.sheen { position: relative; overflow: hidden; }
+.sheen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: translateX(-130%) skewX(-18deg);
+  pointer-events: none;
+}
+.sheen:hover::after,
+.group:hover .sheen::after { animation: sheen 0.9s ease forwards; }
+
+/* Hover lift utility */
+.hover-lift {
+  transition: transform 0.35s cubic-bezier(0.16, 0.84, 0.44, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -18px rgba(33, 26, 34, 0.28);
+}
+
+/* Pulsing ring for primary CTAs (rose) */
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(198, 107, 125, 0.45); }
+  50% { box-shadow: 0 0 0 10px rgba(198, 107, 125, 0); }
+}
+.animate-pulse-ring { animation: pulse-ring 2s infinite; }
+
+/* Ken Burns zoom for hero images */
+@keyframes hero-zoom {
+  from { transform: scale(1.18); }
+  to   { transform: scale(1); }
+}
+.hero-bg-zoom { animation: hero-zoom 1.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards; }
+
+/* Slow rotation for decorative elements */
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.animate-spin-slow { animation: spin-slow 22s linear infinite; }
+
+/* ─── Reduced-motion fallback for the ambient layer ─── */
+@media (prefers-reduced-motion: reduce) {
+  .bg-aurora-mesh, .animate-blob, .bg-dot-grid, .bg-conic-spotlight,
+  .text-shimmer, .sheen::after, .animate-pulse-ring, .hero-bg-zoom,
+  .animate-spin-slow {
+    animation: none !important;
+  }
+  .text-shimmer {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: #C66B7D;
+  }
+}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { AuroraBackground } from "@/components/AuroraBackground";
 
 const footerColumns = [
   {
@@ -31,8 +32,9 @@ const footerColumns = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#211A22] text-white">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-12 md:py-16">
+    <footer className="relative overflow-hidden bg-[#211A22] text-white">
+      <AuroraBackground intensity="soft" blobs={false} conic={false} />
+      <div className="relative z-10 max-w-[1200px] mx-auto px-4 md:px-8 py-12 md:py-16">
         {/* شبكة الأعمدة */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           {/* عمود الهوية */}

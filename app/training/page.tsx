@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { AuroraBackground } from "@/components/AuroraBackground";
 import TrainingRegistrationForm from "./TrainingRegistrationForm";
 import ProgramsGrid from "./ProgramsGrid";
 
@@ -115,8 +116,9 @@ export default function TrainingPage() {
   return (
     <div dir="rtl" className="bg-bg min-h-screen">
       {/* ── 1. Hero ── */}
-      <section className="bg-primary px-4 py-14 md:px-8 md:py-20 text-center">
-        <AnimateOnScroll>
+      <section className="relative overflow-hidden bg-primary px-4 py-14 md:px-8 md:py-20 text-center">
+        <AuroraBackground />
+        <AnimateOnScroll className="relative z-10">
           <h1 className="font-cairo font-bold text-3xl md:text-4xl lg:text-5xl text-white">
             التدريب والبرامج
           </h1>
@@ -136,7 +138,7 @@ export default function TrainingPage() {
                 alt="ورشة تدريبية للنساء"
                 fill
                 sizes="(min-width: 1024px) 1024px, 100vw"
-                className="object-cover"
+                className="object-cover hero-bg-zoom"
               />
             </div>
           </AnimateOnScroll>

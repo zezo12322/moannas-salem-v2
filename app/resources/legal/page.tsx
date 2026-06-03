@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { AuroraBackground } from "@/components/AuroraBackground";
 import { scaleIn } from "@/lib/animations";
 import LegalFAQ from "./LegalFAQ";
 
@@ -44,9 +45,10 @@ export default function LegalPage() {
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section
         dir="rtl"
-        className="bg-primary px-4 py-14 md:px-8 md:py-20 lg:px-16 lg:py-24"
+        className="relative overflow-hidden bg-primary px-4 py-14 md:px-8 md:py-20 lg:px-16 lg:py-24"
       >
-        <div className="max-w-3xl mx-auto text-center flex flex-col gap-4">
+        <AuroraBackground intensity="normal" />
+        <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col gap-4">
           {/* Breadcrumb */}
           <AnimateOnScroll>
             <nav
@@ -126,7 +128,7 @@ export default function LegalPage() {
             {articles.map((article, i) => (
               <AnimateOnScroll key={article.number} delay={i * 0.08}>
                 <article
-                  className="bg-surface rounded-2xl border-r-4 border-secondary p-5 md:p-6 flex flex-col gap-3 shadow-sm"
+                  className="hover-lift bg-surface rounded-2xl border-r-4 border-secondary p-5 md:p-6 flex flex-col gap-3 shadow-sm"
                   aria-label={`${article.number}: ${article.name}`}
                 >
                   <span className="font-cairo font-bold text-sm text-secondary uppercase tracking-wide">
@@ -206,7 +208,7 @@ export default function LegalPage() {
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center min-h-[52px] px-10 py-3 rounded-xl bg-secondary text-white font-cairo font-bold text-base hover:bg-secondary/90 transition-colors shadow-lg shadow-black/20"
+                className="sheen group animate-pulse-ring inline-flex items-center justify-center min-h-[52px] px-10 py-3 rounded-xl bg-secondary text-white font-cairo font-bold text-base hover:bg-secondary/90 transition-colors shadow-lg shadow-black/20"
               >
                 اطلبي استشارة قانونية مجانية
               </Link>
