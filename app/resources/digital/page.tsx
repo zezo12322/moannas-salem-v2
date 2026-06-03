@@ -238,29 +238,29 @@ export default function DigitalPage() {
             </div>
           </AnimateOnScroll>
 
-          <AnimateOnScroll delay={0.1}>
-            <ol
-              className="flex flex-col gap-3"
-              aria-label="قائمة نصائح الأمان الرقمي"
-            >
-              {protectionTips.map((tip, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-4 bg-white rounded-xl border border-gray-100 shadow-sm px-5 py-4"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-[#059669] text-white font-cairo font-bold text-sm mt-0.5"
-                  >
-                    {i + 1}
-                  </span>
-                  <p className="font-tajawal text-gray-700 text-base leading-relaxed pt-0.5">
-                    {tip}
-                  </p>
-                </li>
-              ))}
-            </ol>
-          </AnimateOnScroll>
+          {/* كل نصيحة تكشف نفسها عند السكرول — بدون wrapper كتلي */}
+          <ol
+            className="flex flex-col gap-3"
+            aria-label="قائمة نصائح الأمان الرقمي"
+          >
+            {protectionTips.map((tip, i) => (
+              <li key={i}>
+                <AnimateOnScroll delay={(i % 4) * 0.05}>
+                  <div className="flex items-start gap-4 bg-white rounded-xl border border-gray-100 shadow-sm px-5 py-4">
+                    <span
+                      aria-hidden="true"
+                      className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-[#059669] text-white font-cairo font-bold text-sm mt-0.5"
+                    >
+                      {i + 1}
+                    </span>
+                    <p className="font-tajawal text-gray-700 text-base leading-relaxed pt-0.5">
+                      {tip}
+                    </p>
+                  </div>
+                </AnimateOnScroll>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
