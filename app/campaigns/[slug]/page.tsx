@@ -6,7 +6,7 @@ import { buttonVariants, Card } from "@heroui/react";
 import { campaigns, getCampaignBySlug } from "@/lib/campaigns";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
-import { fadeInUp } from "@/lib/animations";
+import { fadeInUp, slideInRight, slideInLeft, zoomOut, zoomIn, flipUp } from "@/lib/animations";
 
 export function generateStaticParams() {
   return campaigns.map((c) => ({ slug: c.slug }));
@@ -91,7 +91,7 @@ export default async function CampaignPage({
       {/* Image */}
       <section dir="rtl" className="bg-bg px-4 -mt-8 pb-0 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <AnimateOnScroll variants={fadeInUp}>
+          <AnimateOnScroll variants={zoomOut}>
             <div className="relative aspect-[21/9] w-full rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10">
               <Image src={campaign.image} alt={campaign.title} fill priority sizes="(min-width: 1024px) 896px, 100vw" className="object-cover hero-bg-zoom" />
             </div>
@@ -103,7 +103,7 @@ export default async function CampaignPage({
       <section dir="rtl" className="bg-bg px-4 py-14 md:px-8 md:py-20">
         <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           <div className="lg:col-span-2 flex flex-col gap-10">
-            <AnimateOnScroll variants={fadeInUp}>
+            <AnimateOnScroll variants={slideInRight}>
               <div>
                 <h2 className="font-cairo font-bold text-2xl md:text-3xl text-primary mb-5">عن الحملة</h2>
                 {campaign.fullDescription.split("\n\n").map((para, i) => (
@@ -111,7 +111,7 @@ export default async function CampaignPage({
                 ))}
               </div>
             </AnimateOnScroll>
-            <AnimateOnScroll variants={fadeInUp}>
+            <AnimateOnScroll variants={slideInRight}>
               <div>
                 <h2 className="font-cairo font-bold text-2xl md:text-3xl text-primary mb-5">لماذا هذه الحملة؟</h2>
                 <p className="font-tajawal text-base md:text-lg text-foreground/85 leading-[1.95]">{campaign.why}</p>
@@ -119,7 +119,7 @@ export default async function CampaignPage({
             </AnimateOnScroll>
           </div>
           <div className="flex flex-col gap-5">
-            <AnimateOnScroll variants={fadeInUp}>
+            <AnimateOnScroll variants={slideInLeft}>
             <Card className="bg-white p-6 gap-4">
               <div className="flex items-center gap-3">
                 <span className="font-cairo font-medium text-sm text-muted">التصنيف</span>
@@ -150,7 +150,7 @@ export default async function CampaignPage({
               </div>
             </Card>
             </AnimateOnScroll>
-            <AnimateOnScroll variants={fadeInUp} delay={0.1}>
+            <AnimateOnScroll variants={slideInLeft} delay={0.1}>
             <Card className="bg-primary/5 border border-primary/15 p-5 text-center gap-3">
               <p className="font-cairo font-semibold text-primary text-sm">شاركي هذه الحملة</p>
               <p className="font-tajawal text-muted text-xs leading-relaxed">المشاركة تُضخّم الأثر — ساعدينا في الوصول لأكبر عدد ممكن</p>
@@ -170,7 +170,7 @@ export default async function CampaignPage({
           </AnimateOnScroll>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {campaign.activities.map((activity, i) => (
-              <AnimateOnScroll key={i} delay={i * 0.07}>
+              <AnimateOnScroll key={i} delay={i * 0.07} variants={i % 2 === 0 ? slideInRight : slideInLeft}>
                 <Card className="bg-white p-5 gap-3 h-full">
                   <span aria-hidden="true" className="font-cairo font-bold text-3xl text-secondary leading-none">
                     {String(i + 1).padStart(2, "0")}
@@ -188,7 +188,7 @@ export default async function CampaignPage({
         <section dir="rtl" className="bg-primary px-4 py-12 md:py-16">
           <div className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
             {campaign.impact.map((item, i) => (
-              <AnimateOnScroll key={item.label} variants={fadeInUp} delay={i * 0.07}>
+              <AnimateOnScroll key={item.label} variants={zoomIn} delay={i * 0.07}>
                 <div className="flex flex-col items-center text-center gap-2">
                   <span className="font-cairo font-bold text-4xl md:text-5xl text-secondary">{item.stat}</span>
                   <span className="font-tajawal text-sm text-white/80">{item.label}</span>
@@ -203,7 +203,7 @@ export default async function CampaignPage({
       {campaign.quote && (
         <section dir="rtl" className="bg-surface px-4 py-14 md:py-20">
           <div className="max-w-3xl mx-auto">
-            <AnimateOnScroll>
+            <AnimateOnScroll variants={flipUp}>
               <Card className="bg-white !rounded-3xl px-8 py-10 md:px-12 md:py-14 items-center text-center gap-5">
                 <span aria-hidden="true" className="font-cairo font-bold text-8xl text-secondary leading-none -mb-4">&ldquo;</span>
                 <blockquote className="font-tajawal text-base md:text-lg text-foreground/85 leading-loose max-w-xl">

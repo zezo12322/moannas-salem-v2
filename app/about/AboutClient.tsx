@@ -10,8 +10,9 @@ import {
   fadeInUp,
   staggerContainer,
   scaleIn,
-  fadeInLeft,
-  fadeInRight,
+  slideInRight,
+  slideInLeft,
+  zoomOut,
 } from "@/lib/animations";
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -320,7 +321,7 @@ export default function AboutClient() {
           </motion.div>
 
           {/* Story image */}
-          <AnimateOnScroll className="mt-4">
+          <AnimateOnScroll variants={zoomOut} className="mt-4">
             <div className="relative aspect-[16/9] md:aspect-[21/9] w-full rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5">
               <Image
                 src="/images/workshop.jpg"
@@ -351,7 +352,7 @@ export default function AboutClient() {
           {/* Two-column grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {/* Vision Card */}
-            <AnimateOnScroll variants={fadeInRight}>
+            <AnimateOnScroll variants={slideInRight}>
               <Card className="bg-white border-t-4 border-primary p-8 gap-5 h-full">
                 <div className="flex items-center gap-4">
                   <span className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary shrink-0">
@@ -371,7 +372,7 @@ export default function AboutClient() {
             </AnimateOnScroll>
 
             {/* Mission Card */}
-            <AnimateOnScroll variants={fadeInLeft} delay={0.1}>
+            <AnimateOnScroll variants={slideInLeft} delay={0.1}>
               <Card className="bg-white border-t-4 border-primary p-8 gap-5 h-full">
                 <div className="flex items-center gap-4">
                   <span className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary shrink-0">
@@ -463,7 +464,7 @@ export default function AboutClient() {
             {strategicGoals.map((goal, index) => (
               <motion.li
                 key={index}
-                variants={fadeInUp}
+                variants={index % 2 === 0 ? slideInRight : slideInLeft}
                 className="flex items-start gap-5 bg-white/8 rounded-2xl px-6 py-5 border border-white/10 hover:bg-white/12 transition-colors"
               >
                 {/* Gold decorative number */}

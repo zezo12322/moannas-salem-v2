@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
+import { slideInRight, slideInLeft, flipUp } from "@/lib/animations";
 import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
@@ -136,7 +137,7 @@ export default function ContactPage() {
       <section className="px-4 py-10 md:px-8 md:py-16 lg:px-16 lg:py-20">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Right column — form (comes first in RTL DOM order) */}
-          <AnimateOnScroll>
+          <AnimateOnScroll variants={slideInRight}>
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
               <h2 className="font-cairo font-bold text-xl md:text-2xl text-gray-900 mb-6">
                 أرسلي لنا رسالة
@@ -147,7 +148,7 @@ export default function ContactPage() {
 
           {/* Left column — info */}
           <div className="flex flex-col gap-6">
-            <AnimateOnScroll delay={0.1}>
+            <AnimateOnScroll variants={slideInLeft} delay={0.1}>
               <div className="hover-lift bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
                 <h2 className="font-cairo font-bold text-xl md:text-2xl text-gray-900 mb-6">
                   معلومات التواصل
@@ -180,7 +181,7 @@ export default function ContactPage() {
             </AnimateOnScroll>
 
             {/* Social media */}
-            <AnimateOnScroll delay={0.2}>
+            <AnimateOnScroll variants={slideInLeft} delay={0.2}>
               <div className="hover-lift bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <h3 className="font-cairo font-bold text-base text-gray-900 mb-4">
                   تابعينا على وسائل التواصل
@@ -203,7 +204,7 @@ export default function ContactPage() {
             </AnimateOnScroll>
 
             {/* Safety note */}
-            <AnimateOnScroll delay={0.3}>
+            <AnimateOnScroll variants={flipUp} delay={0.3}>
               <div
                 role="note"
                 className="bg-amber-50 border border-amber-200 rounded-xl p-4"

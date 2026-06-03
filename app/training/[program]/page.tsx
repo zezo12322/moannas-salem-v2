@@ -6,7 +6,7 @@ import { buttonVariants, Card } from "@heroui/react";
 import { programs, getProgramById } from "@/lib/programs";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
-import { scaleIn } from "@/lib/animations";
+import { zoomIn, zoomOut, slideInRight, slideInLeft, flipUp } from "@/lib/animations";
 import TrainingRegistrationForm from "@/app/training/TrainingRegistrationForm";
 
 // ─── Static generation ────────────────────────────────────────────────────────
@@ -77,7 +77,7 @@ export default async function ProgramPage({
           </AnimateOnScroll>
 
           {/* Badge */}
-          <AnimateOnScroll variants={scaleIn} delay={0.05} className="flex justify-center">
+          <AnimateOnScroll variants={zoomIn} delay={0.05} className="flex justify-center">
             <span className={`inline-block font-cairo font-semibold text-sm px-5 py-2 rounded-full ${program.badgeClass}`}>
               {program.badge}
             </span>
@@ -118,7 +118,7 @@ export default async function ProgramPage({
       {/* ── Main image ────────────────────────────────────────────────────── */}
       <section dir="rtl" className="bg-bg px-4 -mt-8 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <AnimateOnScroll variants={scaleIn}>
+          <AnimateOnScroll variants={zoomOut}>
             <div className="relative aspect-[21/9] w-full rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10">
               <Image
                 src={program.image}
@@ -138,7 +138,7 @@ export default async function ProgramPage({
         <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Main */}
           <div className="lg:col-span-2 flex flex-col gap-8">
-            <AnimateOnScroll>
+            <AnimateOnScroll variants={slideInRight}>
               <h2 className="font-cairo font-bold text-2xl md:text-3xl text-primary mb-5">عن البرنامج</h2>
               {program.fullDescription.split("\n\n").map((para, i) => (
                 <p key={i} className="font-tajawal text-base md:text-lg text-foreground/85 leading-[1.95] mb-4">
@@ -146,7 +146,7 @@ export default async function ProgramPage({
                 </p>
               ))}
             </AnimateOnScroll>
-            <AnimateOnScroll delay={0.1}>
+            <AnimateOnScroll variants={slideInRight} delay={0.1}>
               <h2 className="font-cairo font-bold text-xl text-primary mb-3">لمن هذا البرنامج؟</h2>
               <p className="font-tajawal text-base text-foreground/85 leading-relaxed">{program.targetAudience}</p>
             </AnimateOnScroll>
@@ -154,7 +154,7 @@ export default async function ProgramPage({
 
           {/* Sidebar */}
           <div className="flex flex-col gap-5">
-            <AnimateOnScroll>
+            <AnimateOnScroll variants={flipUp}>
             <Card className="bg-white p-6 gap-4 hover-lift">
               <h3 className="font-cairo font-bold text-base text-foreground">تفاصيل البرنامج</h3>
               {program.duration && (
@@ -188,7 +188,7 @@ export default async function ProgramPage({
             </Card>
             </AnimateOnScroll>
 
-            <AnimateOnScroll delay={0.1}>
+            <AnimateOnScroll variants={slideInLeft} delay={0.1}>
             {program.statusAvailable ? (
               <Card className="bg-primary/5 border border-primary/15 p-5 text-center gap-3 hover-lift">
                 <p className="font-cairo font-semibold text-primary text-sm">جاهزة للتسجيل؟</p>
@@ -224,7 +224,7 @@ export default async function ProgramPage({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {program.topics.map((topic, i) => (
-              <AnimateOnScroll key={i} delay={i * 0.06}>
+              <AnimateOnScroll key={i} variants={i % 2 === 0 ? slideInRight : slideInLeft} delay={i * 0.06}>
                 <Card className="bg-white p-5 gap-3 h-full">
                   <span aria-hidden="true" className="font-cairo font-bold text-3xl text-secondary leading-none">
                     {String(i + 1).padStart(2, "0")}
@@ -247,7 +247,7 @@ export default async function ProgramPage({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {program.whatYouLearn.map((item, i) => (
-              <AnimateOnScroll key={i} delay={i * 0.08}>
+              <AnimateOnScroll key={i} variants={i % 2 === 0 ? slideInRight : slideInLeft} delay={i * 0.08}>
                 <Card className="bg-white p-5 flex-row items-start gap-4 h-full">
                   <span className="flex items-center justify-center w-8 h-8 rounded-full bg-secondary/15 text-secondary shrink-0 mt-0.5">
                     <CheckIcon />

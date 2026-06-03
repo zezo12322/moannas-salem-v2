@@ -4,7 +4,7 @@ import Link from "next/link";
 import { buttonVariants, Card } from "@heroui/react";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
-import { fadeInUp } from "@/lib/animations";
+import { fadeInUp, slideInRight, slideInLeft, zoomOut, zoomIn } from "@/lib/animations";
 
 export const metadata: Metadata = {
   title: "الأخبار والتغطيات",
@@ -88,7 +88,7 @@ export default function NewsPage() {
       {/* Image banner */}
       <section className="bg-bg px-4 pt-8 md:px-8 md:pt-12">
         <div className="max-w-5xl mx-auto">
-          <AnimateOnScroll>
+          <AnimateOnScroll variants={zoomOut}>
             <div className="relative aspect-[21/9] w-full rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5">
               <Image
                 src="/images/journalist-writing.jpg"
@@ -106,7 +106,7 @@ export default function NewsPage() {
       <section className="bg-bg px-4 py-12 md:px-8 md:py-16 lg:py-20">
         <div className="max-w-4xl mx-auto flex flex-col gap-5 md:gap-6">
           {pressCoverage.map((item, i) => (
-            <AnimateOnScroll key={item.url} delay={i * 0.08}>
+            <AnimateOnScroll key={item.url} delay={i * 0.08} variants={i % 2 === 0 ? slideInRight : slideInLeft}>
               <a
                 href={item.url}
                 target="_blank"
@@ -149,7 +149,7 @@ export default function NewsPage() {
           </p>
           <p className="font-tajawal text-gray-600 mb-8">آخر الأنشطة والحملات أولاً بأول</p>
         </AnimateOnScroll>
-        <AnimateOnScroll variants={fadeInUp} delay={0.1}>
+        <AnimateOnScroll variants={zoomIn} delay={0.1}>
           <div className="flex justify-center gap-3 md:gap-4 flex-wrap">
             <Link
               href="https://www.facebook.com/muanathsalem"

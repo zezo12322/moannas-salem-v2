@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
+import { zoomOut } from "@/lib/animations";
 import TrainingRegistrationForm from "./TrainingRegistrationForm";
 import ProgramsGrid from "./ProgramsGrid";
 
@@ -131,7 +132,7 @@ export default function TrainingPage() {
       {/* ── Image banner ── */}
       <section className="px-4 pt-8 md:px-8 md:pt-12">
         <div className="max-w-5xl mx-auto">
-          <AnimateOnScroll>
+          <AnimateOnScroll variants={zoomOut}>
             <div className="relative aspect-[21/9] w-full rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5">
               <Image
                 src="/images/seminar.jpg"

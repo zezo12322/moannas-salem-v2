@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
-import { scaleIn } from "@/lib/animations";
+import { zoomIn, zoomOut, flipUp, slideInRight, slideInLeft } from "@/lib/animations";
 
 export const metadata: Metadata = {
   title: "الأمان الرقمي",
@@ -145,7 +145,7 @@ export default function DigitalPage() {
               حمايتكِ الرقمية حق، ليست رفاهية
             </p>
           </AnimateOnScroll>
-          <AnimateOnScroll delay={0.3} variants={scaleIn}>
+          <AnimateOnScroll delay={0.3} variants={zoomIn}>
             <div
               aria-hidden="true"
               className="mx-auto mt-2 w-16 h-1 rounded-full bg-white/50"
@@ -157,7 +157,7 @@ export default function DigitalPage() {
       {/* ── Image banner ─────────────────────────────────────────────────── */}
       <section dir="rtl" className="bg-bg px-4 pt-8 md:px-8 md:pt-12">
         <div className="max-w-4xl mx-auto">
-          <AnimateOnScroll>
+          <AnimateOnScroll variants={zoomOut}>
             <div className="relative aspect-[21/9] w-full rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5">
               <Image
                 src="/images/digital-safety.jpg"
@@ -198,7 +198,7 @@ export default function DigitalPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
             {threatTypes.map((threat, i) => (
-              <AnimateOnScroll key={threat.title} delay={i * 0.08}>
+              <AnimateOnScroll key={threat.title} delay={i * 0.08} variants={i % 2 === 0 ? slideInRight : slideInLeft}>
                 <div className="hover-lift bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-6 flex flex-col gap-4">
                   <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#059669]/10 text-[#059669] shrink-0">
                     {threat.icon}
@@ -245,7 +245,7 @@ export default function DigitalPage() {
           >
             {protectionTips.map((tip, i) => (
               <li key={i}>
-                <AnimateOnScroll delay={(i % 4) * 0.05}>
+                <AnimateOnScroll delay={(i % 4) * 0.05} variants={i % 2 === 0 ? slideInRight : slideInLeft}>
                   <div className="flex items-start gap-4 bg-white rounded-xl border border-gray-100 shadow-sm px-5 py-4">
                     <span
                       aria-hidden="true"
@@ -270,7 +270,7 @@ export default function DigitalPage() {
         className="bg-bg px-4 py-12 md:px-8 md:py-16 lg:px-16"
       >
         <div className="max-w-3xl mx-auto">
-          <AnimateOnScroll>
+          <AnimateOnScroll variants={flipUp}>
             <div
               className="bg-red-50 border border-red-200 rounded-2xl px-6 py-7 md:px-8 md:py-8"
               role="alert"

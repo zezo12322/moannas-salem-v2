@@ -11,6 +11,7 @@ import {
   fadeInUp,
   staggerContainer,
   scaleIn,
+  flipUp,
 } from "@/lib/animations";
 
 // ─── useCountUp ──────────────────────────────────────────────────────────────
@@ -392,7 +393,7 @@ export default function HomePage() {
       {/* ── 5. TESTIMONIAL ───────────────────────────────────────────────── */}
       <section dir="rtl" className="bg-surface px-4 py-12 md:px-8 md:py-16 lg:px-16 lg:py-24">
         <div className="max-w-3xl mx-auto">
-          <AnimateOnScroll variants={scaleIn}>
+          <AnimateOnScroll variants={flipUp}>
             <Card className="bg-white !rounded-3xl !shadow-sm px-6 py-10 md:px-12 md:py-14 items-center text-center">
               <span
                 aria-hidden="true"

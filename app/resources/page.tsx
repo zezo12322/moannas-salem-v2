@@ -3,7 +3,7 @@ import Link from "next/link";
 import { buttonVariants } from "@heroui/react";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
-import { scaleIn } from "@/lib/animations";
+import { zoomIn, slideInRight, slideInLeft } from "@/lib/animations";
 
 export const metadata: Metadata = {
   title: "الموارد",
@@ -162,7 +162,7 @@ export default function ResourcesPage() {
               دعم قانوني ونفسي ورقمي — لأن كل امرأة تستحق الدعم الكافي
             </p>
           </AnimateOnScroll>
-          <AnimateOnScroll delay={0.2} variants={scaleIn}>
+          <AnimateOnScroll delay={0.2} variants={zoomIn}>
             <div
               aria-hidden="true"
               className="mx-auto mt-2 w-16 h-1 rounded-full bg-secondary"
@@ -179,7 +179,7 @@ export default function ResourcesPage() {
       >
         <div className="max-w-4xl mx-auto flex flex-col gap-5 md:gap-6">
           {cards.map((card, i) => (
-            <AnimateOnScroll key={card.href} delay={i * 0.1}>
+            <AnimateOnScroll key={card.href} delay={i * 0.1} variants={i % 2 === 0 ? slideInRight : slideInLeft}>
               <ResourceCard {...card} />
             </AnimateOnScroll>
           ))}

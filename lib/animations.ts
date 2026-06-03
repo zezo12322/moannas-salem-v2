@@ -55,6 +55,59 @@ export const slideInFromTop: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: easeOutExpo } },
 };
 
+// ─── دخول جانبي واضح — للأعمدة والكروت المتناوبة ───
+
+// يدخل من جهة اليمين (جهة البداية في RTL)
+export const slideInRight: Variants = {
+  hidden: { opacity: 0, x: 72 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: easeOutExpo },
+  },
+};
+
+// يدخل من جهة اليسار
+export const slideInLeft: Variants = {
+  hidden: { opacity: 0, x: -72 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: easeOutExpo },
+  },
+};
+
+// يظهر من الخارج — يبدأ أكبر وينكمش لمكانه (للصور والبانرات)
+export const zoomOut: Variants = {
+  hidden: { opacity: 0, scale: 1.12 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.55, ease: easeOutExpo },
+  },
+};
+
+// تكبير عميق من الداخل — للأيقونات والشارات
+export const zoomIn: Variants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.55, ease: easeOutExpo },
+  },
+};
+
+// انقلاب لأعلى بمنظور — للكروت البارزة
+export const flipUp: Variants = {
+  hidden: { opacity: 0, rotateX: -24, y: 36, transformPerspective: 900 },
+  visible: {
+    opacity: 1,
+    rotateX: 0,
+    y: 0,
+    transition: { duration: 0.6, ease: easeOutExpo },
+  },
+};
+
 // حاوية تتابع — تُظهر أبناءها واحدًا تلو الآخر
 export const staggerContainer: Variants = {
   hidden: {},

@@ -60,6 +60,8 @@ html {
 body {
   background-color: #FAF5EF;
   color: #211A22;
+  /* يمنع شريط تمرير أفقي أثناء الدخول الجانبي للعناصر (slideInRight/Left) */
+  overflow-x: clip;
   font-family: var(--next-font-ibm-plex-arabic), 'Cairo', 'Noto Sans Arabic', sans-serif;
   line-height: 1.9;
   -webkit-font-smoothing: antialiased;

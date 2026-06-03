@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
-import { scaleIn } from "@/lib/animations";
+import { zoomIn, zoomOut, flipUp, slideInRight, slideInLeft } from "@/lib/animations";
 
 export const metadata: Metadata = {
   title: "الدعم النفسي",
@@ -155,7 +155,7 @@ export default function PsychologicalPage() {
               مساحة آمنة للشفاء والدعم
             </p>
           </AnimateOnScroll>
-          <AnimateOnScroll delay={0.3} variants={scaleIn}>
+          <AnimateOnScroll delay={0.3} variants={zoomIn}>
             <div
               aria-hidden="true"
               className="mx-auto mt-2 w-16 h-1 rounded-full bg-white/50"
@@ -167,7 +167,7 @@ export default function PsychologicalPage() {
       {/* ── Image banner ─────────────────────────────────────────────────── */}
       <section dir="rtl" className="bg-bg px-4 pt-8 md:px-8 md:pt-12">
         <div className="max-w-4xl mx-auto">
-          <AnimateOnScroll>
+          <AnimateOnScroll variants={zoomOut}>
             <div className="relative aspect-[21/9] w-full rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5">
               <Image
                 src="/images/psychological.jpg"
@@ -249,7 +249,7 @@ export default function PsychologicalPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
             {services.map((service, i) => (
-              <AnimateOnScroll key={service.title} delay={i * 0.08}>
+              <AnimateOnScroll key={service.title} delay={i * 0.08} variants={i % 2 === 0 ? slideInRight : slideInLeft}>
                 <div className="hover-lift bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-6 flex flex-col gap-4">
                   <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-accent/10 text-accent shrink-0">
                     {service.icon}
@@ -291,7 +291,7 @@ export default function PsychologicalPage() {
 
           <ol className="flex flex-col gap-5 list-none" aria-label="خطوات التواصل">
             {steps.map((step, i) => (
-              <AnimateOnScroll key={step.number} delay={i * 0.1}>
+              <AnimateOnScroll key={step.number} delay={i * 0.1} variants={i % 2 === 0 ? slideInRight : slideInLeft}>
                 <li className="flex items-start gap-5 bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-6">
                   <span
                     aria-hidden="true"
@@ -320,7 +320,7 @@ export default function PsychologicalPage() {
         className="bg-surface px-4 py-12 md:px-8 md:py-16 lg:px-16"
       >
         <div className="max-w-3xl mx-auto">
-          <AnimateOnScroll>
+          <AnimateOnScroll variants={flipUp}>
             <div
               className="relative overflow-hidden bg-primary rounded-3xl px-6 py-8 md:px-10 md:py-10 flex flex-col items-start gap-4"
               role="note"

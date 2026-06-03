@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
-import { scaleIn } from "@/lib/animations";
+import { zoomIn, zoomOut, slideInRight, slideInLeft } from "@/lib/animations";
 import LegalFAQ from "./LegalFAQ";
 
 export const metadata: Metadata = {
@@ -73,7 +73,7 @@ export default function LegalPage() {
               لأن المعرفة هي أول درع ضد الظلم
             </p>
           </AnimateOnScroll>
-          <AnimateOnScroll delay={0.3} variants={scaleIn}>
+          <AnimateOnScroll delay={0.3} variants={zoomIn}>
             <div
               aria-hidden="true"
               className="mx-auto mt-2 w-16 h-1 rounded-full bg-secondary"
@@ -85,7 +85,7 @@ export default function LegalPage() {
       {/* ── Image banner ─────────────────────────────────────────────────── */}
       <section dir="rtl" className="bg-bg px-4 pt-8 md:px-8 md:pt-12">
         <div className="max-w-4xl mx-auto">
-          <AnimateOnScroll>
+          <AnimateOnScroll variants={zoomOut}>
             <div className="relative aspect-[21/9] w-full rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5">
               <Image
                 src="/images/legal-scales.jpg"
@@ -126,7 +126,7 @@ export default function LegalPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
             {articles.map((article, i) => (
-              <AnimateOnScroll key={article.number} delay={i * 0.08}>
+              <AnimateOnScroll key={article.number} delay={i * 0.08} variants={i % 2 === 0 ? slideInRight : slideInLeft}>
                 <article
                   className="hover-lift bg-surface rounded-2xl border-r-4 border-secondary p-5 md:p-6 flex flex-col gap-3 shadow-sm"
                   aria-label={`${article.number}: ${article.name}`}

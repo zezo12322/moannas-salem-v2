@@ -4,7 +4,7 @@ import { CampaignGrid } from "@/components/CampaignGrid";
 import type { CampaignCardProps } from "@/components/CampaignCard";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
-import { scaleIn } from "@/lib/animations";
+import { zoomOut, zoomIn } from "@/lib/animations";
 
 // ─── Metadata ────────────────────────────────────────────────────────────────
 
@@ -78,7 +78,7 @@ export default function CampaignsPage() {
           </AnimateOnScroll>
 
           {/* Decorative divider */}
-          <AnimateOnScroll delay={0.2}>
+          <AnimateOnScroll delay={0.2} variants={zoomIn}>
             <div
               aria-hidden="true"
               className="w-16 h-1 rounded-full bg-secondary mt-2"
@@ -90,7 +90,7 @@ export default function CampaignsPage() {
       {/* ── Image banner ──────────────────────────────────────────────── */}
       <section dir="rtl" className="bg-bg px-4 pt-8 md:px-8 md:pt-12">
         <div className="max-w-5xl mx-auto">
-          <AnimateOnScroll variants={scaleIn}>
+          <AnimateOnScroll variants={zoomOut}>
             <div className="relative aspect-[21/9] w-full rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5">
               <Image
                 src="/images/women-solidarity.jpg"
