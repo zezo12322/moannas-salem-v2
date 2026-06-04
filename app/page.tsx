@@ -103,8 +103,8 @@ const campaigns = [
 ];
 
 const stats = [
-  { value: 5,   suffix: "+", label: "حملات وطنية" },
-  { value: 30,  suffix: "+", label: "صحفية مشاركة" },
+  { value: 16,  suffix: "+", label: "حملة ونشاطًا وطنيًا" },
+  { value: 40,  suffix: "+", label: "شهادة موثقة" },
   { value: 12,  suffix: "+", label: "ورشة دعم نفسي" },
   { value: 2022, suffix: "", label: "تأسست في" },
 ];
@@ -264,9 +264,9 @@ export default function HomePage() {
               variants={fadeInUp}
               className="flex items-center gap-3 font-tajawal text-sm text-gray-600 mt-1"
             >
-              <span>5 حملات وطنية</span>
+              <span>16+ حملة ونشاطًا</span>
               <span className="text-secondary font-bold">•</span>
-              <span>30+ صحفية</span>
+              <span>40+ شهادة موثقة</span>
               <span className="text-secondary font-bold">•</span>
               <span>منذ 2022</span>
             </motion.div>

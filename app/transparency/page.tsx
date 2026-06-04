@@ -51,6 +51,17 @@ const rightsApproach = [
   },
 ];
 
+const workFields = [
+  "التوعية وبناء القدرات الفنية والمهارية",
+  "البحوث والدراسات وأوراق السياسات المتعلقة بحقوق النساء",
+  "دعم فرص التمويل للمشروعات والتمكين الاقتصادي للمرأة",
+  "دراسات جدوى المشروعات الاقتصادية",
+  "دراسات تحديد ورصد وتقييم الاحتياجات المجتمعية",
+  "التوعية الجماهيرية والمشاركة في المبادرات الوطنية",
+  "دعم الصحة الإنجابية والتوعية في مجالات تنظيم الأسرة",
+  "التبادل الثقافي وتبادل الخبرات بين الشعوب وتعزيز العلاقات الثقافية",
+];
+
 const theoryOfChange = [
   {
     level: "على صعيد الأفراد",
@@ -115,6 +126,49 @@ const strategicDirections = [
     title: "المتابعة والمراجعة",
     description:
       "وضع آليات لرصد وتقييم التقدم المحرز في قضايا حقوق النساء، وتكييف الاستراتيجيات استجابة للتغيرات الاجتماعية والسياسية والاقتصادية.",
+  },
+];
+
+const commitments = [
+  {
+    metric: "30%",
+    title: "زيادة الوعي بحقوق النساء الاقتصادية والاجتماعية خلال 12 شهرًا",
+    measure: "القياس: استطلاعات قبل وبعد الحملات",
+  },
+  {
+    metric: "500 امرأة",
+    title: "تدريبهن على مهارات العمل والحقوق الاقتصادية والاجتماعية خلال 18 شهرًا",
+    measure: "القياس: تسجيل المشاركات وتقييمات البرامج",
+  },
+  {
+    metric: "300 امرأة",
+    title: "توفير خدمات استشارية قانونية لهن خلال عامين",
+    measure: "القياس: متابعة عدد المستفيدات واستبيانات الرضا",
+  },
+  {
+    metric: "10 منظمات + 5 جهات حكومية",
+    title: "شراكات موقعة خلال 3 سنوات",
+    measure: "القياس: توثيق الشراكات والمشاريع المشتركة",
+  },
+  {
+    metric: "3 سياسات أو قوانين",
+    title: "التأثير على تطويرها لتعزيز حقوق النساء في العمل خلال 5 سنوات",
+    measure: "القياس: متابعة المتغيرات في السياسات الحكومية",
+  },
+  {
+    metric: "50%",
+    title: "زيادة المشاركة المجتمعية في فعاليات حقوق النساء",
+    measure: "القياس: تسجيل أعداد المشاركين في الفعاليات",
+  },
+  {
+    metric: "منصة إلكترونية",
+    title: "إطلاق منصة موارد ومعلومات عن حقوق النساء قبل نهاية 2025",
+    measure: "القياس: تتبع الزيارات والمستفيدات",
+  },
+  {
+    metric: "40%",
+    title: "زيادة التمويل السنوي للمؤسسة خلال 3 سنوات",
+    measure: "القياس: تحليل الميزانية والتقارير المالية",
   },
 ];
 
@@ -314,6 +368,56 @@ export default function TransparencyPage() {
         </div>
       </section>
 
+      {/* ── مجالات العمل ──────────────────────────────────────────────────── */}
+      <section
+        dir="rtl"
+        className="bg-bg px-4 py-12 md:px-8 md:py-16 lg:px-16 lg:py-20"
+        aria-labelledby="fields-heading"
+      >
+        <div className="max-w-4xl mx-auto flex flex-col gap-10">
+          <AnimateOnScroll>
+            <div className="text-center">
+              <h2
+                id="fields-heading"
+                className="font-cairo font-bold text-2xl md:text-3xl text-primary"
+              >
+                مجالات العمل
+              </h2>
+              <div
+                aria-hidden="true"
+                className="mx-auto mt-3 w-14 h-1 rounded-full bg-secondary"
+              />
+              <p className="font-tajawal text-gray-600 text-base mt-3 max-w-xl mx-auto leading-relaxed">
+                ثمانية مجالات نعمل من خلالها على النهوض بحقوق النساء — كما حدّدتها
+                خطتنا الاستراتيجية
+              </p>
+            </div>
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {workFields.map((field, i) => (
+              <AnimateOnScroll
+                key={field}
+                delay={(i % 2) * 0.08}
+                variants={i % 2 === 0 ? slideInRight : slideInLeft}
+              >
+                <div className="hover-lift bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-6 flex items-start gap-4 h-full">
+                  <span
+                    aria-hidden="true"
+                    className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-secondary/15 text-secondary font-cairo font-bold text-base"
+                  >
+                    {i + 1}
+                  </span>
+                  <h3 className="font-cairo font-bold text-base text-gray-900 leading-snug pt-1.5">
+                    {field}
+                  </h3>
+                </div>
+              </AnimateOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── النهج القائم على الحقوق ───────────────────────────────────────── */}
       <section
         dir="rtl"
@@ -476,6 +580,58 @@ export default function TransparencyPage() {
                       {direction.description}
                     </p>
                   </div>
+                </div>
+              </AnimateOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── التزاماتنا القابلة للقياس ─────────────────────────────────────── */}
+      <section
+        dir="rtl"
+        className="bg-bg px-4 py-12 md:px-8 md:py-16 lg:px-16 lg:py-20"
+        aria-labelledby="commitments-heading"
+      >
+        <div className="max-w-4xl mx-auto flex flex-col gap-10">
+          <AnimateOnScroll>
+            <div className="text-center">
+              <h2
+                id="commitments-heading"
+                className="font-cairo font-bold text-2xl md:text-3xl text-primary"
+              >
+                التزاماتنا القابلة للقياس
+              </h2>
+              <div
+                aria-hidden="true"
+                className="mx-auto mt-3 w-14 h-1 rounded-full bg-secondary"
+              />
+              <p className="font-tajawal text-gray-600 text-base mt-3 max-w-xl mx-auto leading-relaxed">
+                أهداف محددة بأرقام ومُهل زمنية — كما نصّت عليها الخطة
+                الاستراتيجية، ونقيسها دوريًا
+              </p>
+            </div>
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {commitments.map((commitment, i) => (
+              <AnimateOnScroll
+                key={commitment.title}
+                delay={(i % 2) * 0.08}
+                variants={i % 2 === 0 ? slideInRight : slideInLeft}
+              >
+                <div className="hover-lift bg-white rounded-2xl shadow-sm border border-gray-100 border-t-4 border-t-secondary p-5 md:p-6 flex flex-col gap-3 h-full">
+                  <AnimateOnScroll variants={zoomIn} delay={0.1}>
+                    <span className="font-cairo font-bold text-3xl text-secondary leading-tight block">
+                      {commitment.metric}
+                    </span>
+                  </AnimateOnScroll>
+                  <h3 className="font-cairo font-bold text-base text-gray-900 leading-snug">
+                    {commitment.title}
+                  </h3>
+                  <p className="font-tajawal text-muted text-sm leading-relaxed mt-auto">
+                    {commitment.measure}
+                  </p>
                 </div>
               </AnimateOnScroll>
             ))}

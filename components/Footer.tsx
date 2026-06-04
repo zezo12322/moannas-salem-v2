@@ -8,6 +8,7 @@ const footerColumns = [
     links: [
       { label: "من نحن",       href: "/about" },
       { label: "الشفافية والحوكمة", href: "/transparency" },
+      { label: "الواقع بالأرقام", href: "/reality" },
       { label: "الحملات",     href: "/campaigns" },
       { label: "التدريب",     href: "/training" },
     ],

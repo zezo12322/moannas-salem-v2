@@ -14,6 +14,7 @@ import {
   slideInLeft,
   zoomOut,
   zoomIn,
+  flipUp,
 } from "@/lib/animations";
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -261,6 +262,15 @@ const journey = [
   },
 ];
 
+// نجاحات المبادرة قبل التأسيس الرسمي
+const preFoundationSuccesses = [
+  "المشاركة وقيادة عدد من حملات المناصرة في مجال مناهضة العنف والتحرش في بيئة العمل",
+  "تنفيذ تدريبات متخصصة في سياسات حماية النساء في بيئة العمل",
+  "المشاركة في لجنة صياغة سياسات حماية الصحفيات في بيئة العمل الصحفي بنقابة الصحفيين",
+  "التشبيك والشراكة مع منظمات المجتمع المدني العاملة في حقوق المرأة والنوع الاجتماعي",
+  "المشاركة في التدريبات والأنشطة الإقليمية الداعمة لحقوق المرأة",
+];
+
 // برامجنا — البرامج الأربعة
 const programs = [
   {
@@ -489,6 +499,33 @@ export default function AboutClient() {
               </motion.li>
             ))}
           </motion.ol>
+
+          {/* نجاحات ما قبل التأسيس — compact card */}
+          <AnimateOnScroll variants={flipUp} delay={0.1}>
+            <Card className="bg-white border-r-4 border-secondary p-6 md:p-8 gap-5">
+              <div className="flex items-center gap-3">
+                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary/15 text-secondary shrink-0">
+                  <StarIcon />
+                </span>
+                <Card.Title className="font-cairo font-bold text-lg md:text-xl text-primary">
+                  نجاحات المبادرة قبل التأسيس
+                </Card.Title>
+              </div>
+              <ul className="flex flex-col gap-3.5">
+                {preFoundationSuccesses.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span
+                      aria-hidden="true"
+                      className="mt-2 w-2 h-2 rounded-full bg-secondary shrink-0"
+                    />
+                    <p className="font-tajawal text-base md:text-lg text-gray-700 leading-[1.9]">
+                      {item}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </AnimateOnScroll>
         </div>
       </section>
 

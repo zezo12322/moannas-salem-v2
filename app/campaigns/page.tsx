@@ -38,6 +38,8 @@ const campaigns: Campaign[] = [
   { id: 14, slug: "taghayyurat-manakhiyya", title: "التغيرات المناخية والقصص الصحفية", description: "تدريب الصحفيات على تغطية قضايا التغير المناخي من منظور النوع الاجتماعي",                 category: "training",     hashtag: "#صحافة_مناخية",       date: "2024", status: "completed" },
   { id: 15, slug: "fatura-alunf",           title: "فاتورة العنف",                      description: "حملة تسلط الضوء على التكلفة الاقتصادية والنفسية للعنف ضد النساء التي تدفعها الضحايا لسنوات", category: "violence",  hashtag: "#فاتورة_العنف",       date: "2025", status: "active" },
   { id: 16, slug: "aman-qalami",            title: "أمان رقمي / أمان قلمي",            description: "مبادرة لحماية الصحفيات من العنف الإلكتروني وتعزيز سلامتهن الرقمية والمهنية",            category: "digital",      hashtag: "#أمان_قلمي",          date: "2025", status: "active" },
+  { id: 17, slug: "sinaat-albayanat",       title: "صناعة البيانات الاجتماعية",        description: "تدريب على إنتاج واستخدام البيانات الاجتماعية لدعم قضايا النساء بالأدلة",                category: "training",     hashtag: "#صناعة_البيانات",     date: "2024", status: "completed" },
+  { id: 18, slug: "taam-alkalam",           title: "طعم الكلام: ورشة كتابة إبداعية",   description: "ورشة كتابة إبداعية لتمكين النساء من التعبير عن قصصهن وتجاربهن بأصواتهن",                 category: "training",     hashtag: "#طعم_الكلام",         date: "2024", status: "completed" },
 ];
 
 // ─── Page ────────────────────────────────────────────────────────────────────

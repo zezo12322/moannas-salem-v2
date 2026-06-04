@@ -3,8 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView, useReducedMotion } from "framer-motion";
 
-const toArabicDigits = (n: number) =>
-  String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[Number(d)]);
+const toArabicDigits = (n: number, decimals: number) =>
+  n
+    .toFixed(decimals)
+    .replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[Number(d)])
+    .replace(".", "٫");
 
 interface AnimatedCounterProps {
   value: number;
@@ -23,6 +26,8 @@ export function AnimatedCounter({
   const inView = useInView(ref, { once: true, amount: 0.4 });
   const reduce = useReducedMotion();
   const [display, setDisplay] = useState(0);
+  // عدد المنازل العشرية — يحافظ على دقة الإحصائيات الكسرية (مثل 48.6%)
+  const decimals = Number.isInteger(value) ? 0 : 1;
 
   useEffect(() => {
     if (!inView) return;
@@ -36,7 +41,7 @@ export function AnimatedCounter({
       if (!start) start = ts;
       const t = Math.min((ts - start) / (duration * 1000), 1);
       const eased = 1 - Math.pow(1 - t, 3); // ease-out-cubic
-      setDisplay(Math.round(eased * value));
+      setDisplay(t < 1 ? eased * value : value);
       if (t < 1) raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);
@@ -45,7 +50,7 @@ export function AnimatedCounter({
 
   return (
     <span ref={ref} className={className}>
-      {toArabicDigits(display)}
+      {toArabicDigits(display, decimals)}
       {suffix}
     </span>
   );
