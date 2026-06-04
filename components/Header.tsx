@@ -6,10 +6,11 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const navLinks = [
-  { href: "/about",     label: "من نحن" },
-  { href: "/campaigns", label: "الحملات" },
-  { href: "/training",  label: "التدريب" },
-  { href: "/resources", label: "الموارد" },
+  { href: "/about",        label: "من نحن" },
+  { href: "/campaigns",    label: "الحملات" },
+  { href: "/training",     label: "التدريب" },
+  { href: "/resources",    label: "الموارد" },
+  { href: "/transparency", label: "الشفافية" },
 ];
 
 export default function Header() {

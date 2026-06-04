@@ -433,6 +433,15 @@ export default function AboutClient() {
                   </div>
                 ))}
               </dl>
+
+              {/* رابط صفحة الشفافية والحوكمة */}
+              <Link
+                href="/transparency"
+                className="inline-flex items-center gap-2 self-start font-cairo font-semibold text-sm md:text-base text-primary hover:text-accent transition-colors min-h-[44px]"
+              >
+                اطلعي على الشفافية والحوكمة — الهيكل المؤسسي ونظرية التغيير وآليات المساءلة
+                <span aria-hidden="true" className="text-lg">←</span>
+              </Link>
             </Card>
           </AnimateOnScroll>
         </div>
