@@ -431,7 +431,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center gap-6">
           <AnimateOnScroll>
             <h2 className="font-cairo font-bold text-2xl md:text-3xl lg:text-4xl text-white leading-snug">
-              هل تحتاجين مساعدة أو <span className="text-shimmer">دعماً</span>؟
+              هل تحتاجين مساعدة أو دعماً؟
             </h2>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.1}>
