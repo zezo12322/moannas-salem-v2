@@ -45,6 +45,8 @@ export const activities: Activity[] = [
   // ───────────────────────── 2025 ─────────────────────────
   {
     slug: "sep25-political-participation",
+    images: 1,
+    imageType: "cards",
     title: "جلسة حوارية إقليمية: المشاركة السياسية للمرأة تعزز الاستقرار والتنمية المستدامة",
     kind: "ندوة",
     dateLabel: "13 سبتمبر 2025",
@@ -59,6 +61,8 @@ export const activities: Activity[] = [
   },
   {
     slug: "sep25-arij-gender-journalism",
+    images: 1,
+    imageType: "photos",
     title: "ورشة الصحافة الجندرية بالتعاون مع شبكة أريج",
     kind: "تدريب",
     dateLabel: "سبتمبر 2025",
@@ -71,6 +75,8 @@ export const activities: Activity[] = [
   },
   {
     slug: "sep25-peer-psych-support",
+    images: 1,
+    imageType: "photos",
     title: "ورشة الدعم النفسي للأقران بالتعاون مع أريج",
     kind: "ورشة",
     dateLabel: "28 سبتمبر 2025",
@@ -83,6 +89,8 @@ export const activities: Activity[] = [
   },
   {
     slug: "aug25-arij-digital-violence",
+    images: 1,
+    imageType: "photos",
     title: "تدريب أفكار حول العنف الرقمي بالتعاون مع أريج",
     kind: "تدريب",
     dateLabel: "25 أغسطس 2025",
@@ -95,6 +103,8 @@ export const activities: Activity[] = [
   },
   {
     slug: "jul25-digital-security-workshop",
+    images: 1,
+    imageType: "photos",
     title: "ورشة السلامة والأمن الرقمي مع الخبير أحمد حجاب",
     kind: "ورشة",
     dateLabel: "14 يوليو 2025",
@@ -106,6 +116,8 @@ export const activities: Activity[] = [
   },
   {
     slug: "jul25-temp-journalists",
+    images: 1,
+    imageType: "cards",
     title: "توثيق شهادات الصحفيين والصحفيات المؤقتين في الصحف القومية",
     kind: "حملة",
     dateLabel: "يوليو 2025",
@@ -117,6 +129,8 @@ export const activities: Activity[] = [
   },
   {
     slug: "jul25-burnout-session",
+    images: 1,
+    imageType: "cards",
     title: "ورشة الاحتراق النفسي والتفريغ الانفعالي وعلاقته بالعنف الرقمي",
     kind: "ورشة",
     dateLabel: "11 يوليو 2025",
@@ -128,6 +142,8 @@ export const activities: Activity[] = [
   },
   {
     slug: "jun25-hanqdar-digital-safety",
+    images: 1,
+    imageType: "photos",
     title: "تدريبات «هنقدر» لمناهضة الابتزاز الإلكتروني",
     kind: "تدريب",
     dateLabel: "يونيو 2025",
@@ -203,6 +219,7 @@ export const activities: Activity[] = [
   },
   {
     slug: "hekayatohon",
+    campaignSlug: "hekayatohon",
     title: "حملة حكاياتهنّ في أماكن العمل — من أجل عالم عمل صحي وآمن",
     kind: "حملة",
     dateLabel: "ديسمبر 2024",
@@ -462,6 +479,7 @@ export const activities: Activity[] = [
   },
   {
     slug: "abelt-shoghli",
+    campaignSlug: "abelt-shoghli",
     title: "حملة #قابلت_في_شغلي",
     kind: "حملة",
     dateLabel: "أبريل–مايو 2024",
@@ -492,6 +510,7 @@ export const activities: Activity[] = [
   // ───────────────────────── مارس 2024 ─────────────────────────
   {
     slug: "ana-om-najha",
+    campaignSlug: "ana-om-wa-najha",
     title: "حملة #أنا_أم_وناجحة",
     kind: "حملة",
     dateLabel: "مارس 2024",
@@ -504,6 +523,7 @@ export const activities: Activity[] = [
   },
   {
     slug: "lama-roht",
+    campaignSlug: "lama-roht",
     title: "حملة #لما_رحت_القسم",
     kind: "حملة",
     dateLabel: "مارس 2024",

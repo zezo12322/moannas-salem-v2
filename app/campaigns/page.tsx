@@ -40,6 +40,10 @@ const campaigns: Campaign[] = [
   { id: 16, slug: "aman-qalami",            title: "أمان رقمي / أمان قلمي",            description: "مبادرة لحماية الصحفيات من العنف الإلكتروني وتعزيز سلامتهن الرقمية والمهنية",            category: "digital",      hashtag: "#أمان_قلمي",          date: "2025", status: "active" },
   { id: 17, slug: "sinaat-albayanat",       title: "صناعة البيانات الاجتماعية",        description: "تدريب على إنتاج واستخدام البيانات الاجتماعية لدعم قضايا النساء بالأدلة",                category: "training",     hashtag: "#صناعة_البيانات",     date: "2024", status: "completed" },
   { id: 18, slug: "taam-alkalam",           title: "طعم الكلام: ورشة كتابة إبداعية",   description: "ورشة كتابة إبداعية لتمكين النساء من التعبير عن قصصهن وتجاربهن بأصواتهن",                 category: "training",     hashtag: "#طعم_الكلام",         date: "2024", status: "completed" },
+  { id: 19, slug: "hekayatohon",            title: "حكاياتهنّ في أماكن العمل",          description: "توثيق شهادات نسائية عن العنف في بيئة العمل والدعوة للتصديق على اتفاقية 190",            category: "violence",     hashtag: "#حكايتهن",            date: "2024", status: "completed" },
+  { id: 20, slug: "abelt-shoghli",          title: "قابلت في شغلي",                     description: "مساحة آمنة للنساء لسرد تجاربهن مع الانتهاكات والتمييز والضغوط في بيئات العمل",            category: "violence",     hashtag: "#قابلت_في_شغلي",      date: "2024", status: "completed" },
+  { id: 21, slug: "ana-om-wa-najha",        title: "أنا أم وناجحة",                     description: "تسليط الضوء على الضغوط المزدوجة التي تواجهها الأمهات العاملات في ظل غياب الدعم الكافي",  category: "economic",     hashtag: "#أنا_أم_وناجحة",      date: "2024", status: "completed" },
+  { id: 22, slug: "lama-roht",              title: "لما رحت القسم",                     description: "تسليط الضوء على صعوبات الإبلاغ عن التحرش وإرشاد الناجيات لخطوات الإبلاغ الصحيحة",         category: "violence",     hashtag: "#لما_رحت_القسم",      date: "2024", status: "completed" },
 ];
 
 // ─── Page ────────────────────────────────────────────────────────────────────
