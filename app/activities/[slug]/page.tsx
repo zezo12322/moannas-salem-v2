@@ -1,0 +1,228 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { AuroraBackground } from "@/components/AuroraBackground";
+import { ActivityGallery } from "@/components/ActivityGallery";
+import { fadeInUp, zoomIn, flipUp, slideInRight, slideInLeft } from "@/lib/animations";
+import { activities, activitiesSorted, THEME_META } from "@/lib/activities";
+import { getCampaignBySlug } from "@/lib/campaigns";
+
+export function generateStaticParams() {
+  return activities.map((a) => ({ slug: a.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const a = activities.find((x) => x.slug === slug);
+  if (!a) return {};
+  return { title: a.title, description: a.summary };
+}
+
+export default async function ActivityPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const a = activities.find((x) => x.slug === slug);
+  if (!a) notFound();
+
+  const tm = THEME_META[a.theme];
+  const campaign = a.campaignSlug ? getCampaignBySlug(a.campaignSlug) : undefined;
+  const related = activitiesSorted
+    .filter((x) => x.theme === a.theme && x.slug !== a.slug)
+    .slice(0, 3);
+
+  return (
+    <>
+      {/* Hero */}
+      <section
+        dir="rtl"
+        className="relative overflow-hidden bg-primary px-4 py-14 md:px-8 md:py-20 lg:py-24"
+      >
+        <AuroraBackground intensity="normal" />
+        <AnimateOnScroll variants={fadeInUp} className="relative z-10">
+          <div className="max-w-4xl mx-auto flex flex-col gap-5 text-center">
+            <nav
+              aria-label="مسار التنقل"
+              className="flex justify-center gap-2 font-tajawal text-sm text-white/60"
+            >
+              <Link href="/activities" className="hover:text-white transition-colors">
+                أنشطتنا
+              </Link>
+              <span aria-hidden="true">/</span>
+              <span className="text-white/90">{a.kind}</span>
+            </nav>
+            <div className="flex justify-center">
+              <span className="inline-flex items-center gap-2 bg-secondary/20 text-secondary border border-secondary/30 font-cairo font-semibold text-sm px-5 py-2 rounded-full">
+                {tm.label}
+              </span>
+            </div>
+            <h1 className="font-cairo font-bold text-2xl md:text-4xl lg:text-[2.6rem] text-white leading-snug">
+              {a.title}
+            </h1>
+            <div className="flex flex-wrap justify-center items-center gap-3 text-sm font-tajawal text-white/70">
+              <span className="font-cairo font-medium text-secondary">{a.kind}</span>
+              <span aria-hidden="true">•</span>
+              <span>{a.dateLabel}</span>
+            </div>
+            <div aria-hidden="true" className="mx-auto mt-1 w-16 h-1 rounded-full bg-secondary" />
+          </div>
+        </AnimateOnScroll>
+      </section>
+
+      {/* عن النشاط */}
+      <section dir="rtl" className="bg-bg px-4 py-12 md:px-8 md:py-16 lg:py-20">
+        <div className="max-w-3xl mx-auto flex flex-col gap-6">
+          <AnimateOnScroll variants={fadeInUp}>
+            <p className="font-tajawal text-base md:text-lg text-foreground/85 leading-[1.95]">
+              {a.summary}
+            </p>
+          </AnimateOnScroll>
+
+          {a.partners && a.partners.length > 0 && (
+            <AnimateOnScroll variants={fadeInUp} delay={0.05}>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="font-cairo font-semibold text-sm text-muted">
+                  بالشراكة مع:
+                </span>
+                {a.partners.map((p) => (
+                  <span
+                    key={p}
+                    className="font-tajawal text-sm bg-surface border border-border text-foreground/80 px-3 py-1 rounded-full"
+                  >
+                    {p}
+                  </span>
+                ))}
+              </div>
+            </AnimateOnScroll>
+          )}
+
+          {campaign && (
+            <AnimateOnScroll variants={fadeInUp} delay={0.1}>
+              <Link
+                href={`/campaigns/${campaign.slug}`}
+                className="inline-flex items-center gap-2 self-start font-cairo font-semibold text-sm md:text-base text-primary hover:text-accent transition-colors min-h-[44px]"
+              >
+                اطّلعي على صفحة الحملة الكاملة: {campaign.title}
+                <span aria-hidden="true" className="text-lg">←</span>
+              </Link>
+            </AnimateOnScroll>
+          )}
+        </div>
+      </section>
+
+      {/* المعرض */}
+      {a.images && a.images > 0 && (
+        <section
+          dir="rtl"
+          className="bg-surface px-4 py-12 md:px-8 md:py-16 lg:py-20"
+          aria-labelledby="gallery-heading"
+        >
+          <div className="max-w-5xl mx-auto flex flex-col gap-8">
+            <AnimateOnScroll className="text-center">
+              <h2
+                id="gallery-heading"
+                className="font-cairo font-bold text-2xl md:text-3xl text-primary"
+              >
+                {a.imageType === "cards" ? "من الحملة" : "من الفعالية"}
+              </h2>
+              <div aria-hidden="true" className="mx-auto mt-3 w-14 h-1 rounded-full bg-secondary" />
+            </AnimateOnScroll>
+            <AnimateOnScroll variants={fadeInUp}>
+              <ActivityGallery
+                slug={a.slug}
+                count={a.images}
+                alt={a.title}
+                variant={a.imageType ?? "photos"}
+              />
+            </AnimateOnScroll>
+          </div>
+        </section>
+      )}
+
+      {/* روابط فيسبوك */}
+      {a.fbLinks && a.fbLinks.length > 0 && (
+        <section dir="rtl" className="bg-bg px-4 py-10 md:px-8">
+          <div className="max-w-3xl mx-auto flex flex-col items-center gap-4 text-center">
+            <AnimateOnScroll variants={zoomIn}>
+              <p className="font-cairo font-semibold text-base text-foreground">
+                شاهدي التغطية الكاملة على صفحتنا
+              </p>
+            </AnimateOnScroll>
+            <AnimateOnScroll variants={fadeInUp} delay={0.05}>
+              <div className="flex flex-wrap justify-center gap-3">
+                {a.fbLinks.map((link, i) => (
+                  <a
+                    key={i}
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sheen group font-cairo font-semibold text-sm inline-flex items-center justify-center gap-2 min-h-[48px] rounded-full bg-primary text-white px-6 transition-colors hover:bg-primary-hover"
+                  >
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 shrink-0">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
+                    {a.fbLinks!.length > 1 ? `منشور ${i + 1}` : "شاهدي على فيسبوك"}
+                  </a>
+                ))}
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </section>
+      )}
+
+      {/* أنشطة ذات صلة */}
+      {related.length > 0 && (
+        <section dir="rtl" className="bg-surface px-4 py-14 md:px-8 md:py-20">
+          <div className="max-w-5xl mx-auto flex flex-col gap-8">
+            <AnimateOnScroll className="text-center">
+              <h2 className="font-cairo font-bold text-2xl md:text-3xl text-primary">
+                أنشطة ذات صلة
+              </h2>
+              <div aria-hidden="true" className="mx-auto mt-3 w-14 h-1 rounded-full bg-secondary" />
+            </AnimateOnScroll>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              {related.map((r, i) => (
+                <AnimateOnScroll key={r.slug} delay={i * 0.06} variants={i % 2 === 0 ? slideInRight : slideInLeft}>
+                  <Link
+                    href={`/activities/${r.slug}`}
+                    className="hover-lift group flex flex-col h-full bg-white rounded-2xl p-5 gap-2 border border-border shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  >
+                    <span className="font-tajawal text-xs text-muted">{r.dateLabel}</span>
+                    <h3 className="font-cairo font-bold text-base text-foreground group-hover:text-primary transition-colors leading-snug line-clamp-2">
+                      {r.title}
+                    </h3>
+                    <p className="font-tajawal text-sm text-muted leading-relaxed line-clamp-2">
+                      {r.summary}
+                    </p>
+                  </Link>
+                </AnimateOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CTA */}
+      <section dir="rtl" className="bg-bg px-4 py-12 md:py-16">
+        <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-5">
+          <AnimateOnScroll variants={flipUp}>
+            <Link
+              href="/activities"
+              className="inline-flex items-center justify-center gap-2 min-h-[48px] px-8 rounded-full border-2 border-primary text-primary font-cairo font-bold hover:bg-primary hover:text-white transition-colors"
+            >
+              <span aria-hidden="true">→</span>
+              كل الأنشطة
+            </Link>
+          </AnimateOnScroll>
+        </div>
+      </section>
+    </>
+  );
+}

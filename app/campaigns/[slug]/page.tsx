@@ -3,9 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { buttonVariants, Card } from "@heroui/react";
-import { campaigns, getCampaignBySlug } from "@/lib/campaigns";
+import { campaigns, getCampaignBySlug, campaignGalleries, campaignRealHero } from "@/lib/campaigns";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
+import { ActivityGallery } from "@/components/ActivityGallery";
 import { fadeInUp, slideInRight, slideInLeft, zoomOut, zoomIn, flipUp } from "@/lib/animations";
 
 export function generateStaticParams() {
@@ -47,6 +48,9 @@ export default async function CampaignPage({
   const { slug } = await params;
   const campaign = getCampaignBySlug(slug);
   if (!campaign) notFound();
+
+  const heroImg = campaignRealHero[campaign.slug] ?? campaign.image;
+  const gallery = campaignGalleries[campaign.slug];
 
   return (
     <>
@@ -93,7 +97,7 @@ export default async function CampaignPage({
         <div className="max-w-4xl mx-auto">
           <AnimateOnScroll variants={zoomOut}>
             <div className="relative aspect-[21/9] w-full rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10">
-              <Image src={campaign.image} alt={campaign.title} fill priority sizes="(min-width: 1024px) 896px, 100vw" className="object-cover hero-bg-zoom" />
+              <Image src={heroImg} alt={campaign.title} fill priority sizes="(min-width: 1024px) 896px, 100vw" className="object-cover hero-bg-zoom" />
             </div>
           </AnimateOnScroll>
         </div>
@@ -195,6 +199,28 @@ export default async function CampaignPage({
           </div>
         </div>
       </section>
+
+      {/* Gallery — صور حقيقية من سجل الأنشطة */}
+      {gallery && (
+        <section dir="rtl" className="bg-bg px-4 py-14 md:px-8 md:py-20">
+          <div className="max-w-5xl mx-auto flex flex-col gap-8">
+            <AnimateOnScroll className="text-center">
+              <h2 className="font-cairo font-bold text-2xl md:text-3xl text-primary">
+                {gallery.type === "cards" ? "من الحملة" : "من الفعاليات"}
+              </h2>
+              <div aria-hidden="true" className="mx-auto mt-3 w-14 h-1 rounded-full bg-secondary" />
+            </AnimateOnScroll>
+            <AnimateOnScroll variants={fadeInUp}>
+              <ActivityGallery
+                slug={gallery.slug}
+                count={gallery.count}
+                alt={campaign.title}
+                variant={gallery.type}
+              />
+            </AnimateOnScroll>
+          </div>
+        </section>
+      )}
 
       {/* Impact */}
       {campaign.impact && campaign.impact.length > 0 && (

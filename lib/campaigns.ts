@@ -424,3 +424,28 @@ export const campaigns: CampaignDetail[] = [
 export function getCampaignBySlug(slug: string): CampaignDetail | undefined {
   return campaigns.find((c) => c.slug === slug);
 }
+
+// ─── معارض صور حقيقية للحملات (من سجل الأنشطة في lib/activities.ts) ───
+// تُعرض داخل صفحة الحملة. النوع "cards" = بطاقات تصميم، "photos" = صور فعاليات.
+export const campaignGalleries: Record<
+  string,
+  { slug: string; count: number; type: "photos" | "cards" }
+> = {
+  "ittifaqiyya-190": { slug: "c190-training", count: 5, type: "photos" },
+  "min-awwal-almashhwar": { slug: "awwal-meshwar", count: 5, type: "photos" },
+  "lugha-hassasa": { slug: "lugha-jul", count: 5, type: "photos" },
+  "taam-alkalam": { slug: "taam-alkalam", count: 5, type: "photos" },
+  "taghayyurat-manakhiyya": { slug: "climate", count: 5, type: "photos" },
+  "alsalama-alraqamiyya": { slug: "digsafe-jul", count: 5, type: "photos" },
+  "aman-qalami": { slug: "aman-qalami", count: 5, type: "cards" },
+};
+
+// صورة هيرو حقيقية تحل محل صورة الـ stock للحملات المصوّرة
+export const campaignRealHero: Record<string, string> = {
+  "ittifaqiyya-190": "/images/activities/c190-training/1.jpg",
+  "min-awwal-almashhwar": "/images/activities/awwal-meshwar/1.jpg",
+  "lugha-hassasa": "/images/activities/lugha-jul/1.jpg",
+  "taam-alkalam": "/images/activities/taam-alkalam/1.jpg",
+  "taghayyurat-manakhiyya": "/images/activities/climate/1.jpg",
+  "alsalama-alraqamiyya": "/images/activities/digsafe-jul/1.jpg",
+};

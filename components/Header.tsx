@@ -8,6 +8,7 @@ import { useState } from "react";
 const navLinks = [
   { href: "/about",        label: "من نحن" },
   { href: "/campaigns",    label: "الحملات" },
+  { href: "/activities",   label: "أنشطتنا" },
   { href: "/training",     label: "التدريب" },
   { href: "/resources",    label: "الموارد" },
   { href: "/transparency", label: "الشفافية" },
