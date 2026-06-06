@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
 import { zoomIn, zoomOut, flipUp, slideInRight, slideInLeft } from "@/lib/animations";
+import { selfCareCapsules } from "@/lib/postContent";
 
 export const metadata: Metadata = {
   title: "الدعم النفسي",
@@ -259,6 +260,48 @@ export default function PsychologicalPage() {
                   </h3>
                   <p className="font-tajawal text-gray-600 text-sm md:text-base leading-relaxed">
                     {service.description}
+                  </p>
+                </div>
+              </AnimateOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Self Care Capsules ──────────────────────────────────────────── */}
+      <section
+        dir="rtl"
+        className="bg-bg px-4 py-12 md:px-8 md:py-16 lg:px-16 lg:py-20"
+        aria-labelledby="self-care-heading"
+      >
+        <div className="max-w-4xl mx-auto flex flex-col gap-8">
+          <AnimateOnScroll>
+            <div className="text-center">
+              <h2
+                id="self-care-heading"
+                className="font-cairo font-bold text-2xl md:text-3xl text-primary"
+              >
+                كبسولات الرعاية الذاتية
+              </h2>
+              <p className="font-tajawal text-gray-600 text-base mt-3 max-w-xl mx-auto leading-relaxed">
+                من منشورات مؤنث سالم حول الضغط المهني، الأخبار السلبية، ووضع الحدود
+              </p>
+              <div
+                aria-hidden="true"
+                className="mx-auto mt-4 w-14 h-1 rounded-full bg-secondary"
+              />
+            </div>
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {selfCareCapsules.map((capsule, i) => (
+              <AnimateOnScroll key={capsule} delay={i * 0.06} variants={i % 2 === 0 ? slideInRight : slideInLeft}>
+                <div className="h-full bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+                  <span className="font-cairo font-bold text-2xl text-accent">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="font-tajawal text-gray-700 text-base leading-relaxed mt-2">
+                    {capsule}
                   </p>
                 </div>
               </AnimateOnScroll>

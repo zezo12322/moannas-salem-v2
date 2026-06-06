@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { revealUp } from "@/lib/animations";
 import {
   activitiesSorted,
   activityYears,
@@ -80,11 +82,16 @@ export function ActivitiesExplorer() {
 
       {/* الشبكة */}
       <ul className="list-none m-0 p-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-        {filtered.map((a) => {
+        {filtered.map((a, i) => {
           const hero = activityHero(a);
           const tm = THEME_META[a.theme];
           return (
             <li key={a.slug} className="h-full">
+              <AnimateOnScroll
+                variants={revealUp}
+                delay={(i % 3) * 0.14}
+                className="h-full"
+              >
               <Link
                 href={`/activities/${a.slug}`}
                 className="hover-lift group flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-border shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
@@ -131,6 +138,7 @@ export function ActivitiesExplorer() {
                   </span>
                 </div>
               </Link>
+              </AnimateOnScroll>
             </li>
           );
         })}

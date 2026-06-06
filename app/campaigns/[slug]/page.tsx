@@ -8,6 +8,7 @@ import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
 import { ActivityGallery } from "@/components/ActivityGallery";
 import { fadeInUp, slideInRight, slideInLeft, zoomOut, zoomIn, flipUp } from "@/lib/animations";
+import { campaignPostContent } from "@/lib/postContent";
 
 export function generateStaticParams() {
   return campaigns.map((c) => ({ slug: c.slug }));
@@ -51,6 +52,7 @@ export default async function CampaignPage({
 
   const heroImg = campaignRealHero[campaign.slug] ?? campaign.image;
   const gallery = campaignGalleries[campaign.slug];
+  const postContent = campaignPostContent[campaign.slug];
 
   return (
     <>
@@ -199,6 +201,56 @@ export default async function CampaignPage({
           </div>
         </div>
       </section>
+
+      {/* من البوستات والبيانات */}
+      {postContent && (
+        <section dir="rtl" className="bg-bg px-4 py-14 md:px-8 md:py-20">
+          <div className="max-w-4xl mx-auto flex flex-col gap-8">
+            <AnimateOnScroll className="text-center">
+              <h2 className="font-cairo font-bold text-2xl md:text-3xl text-primary">
+                {postContent.title}
+              </h2>
+              <p className="font-tajawal text-base text-muted leading-relaxed mt-3 max-w-2xl mx-auto">
+                {postContent.intro}
+              </p>
+              <div aria-hidden="true" className="mx-auto mt-4 w-14 h-1 rounded-full bg-secondary" />
+            </AnimateOnScroll>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {postContent.points.map((point, i) => (
+                <AnimateOnScroll key={point} delay={i * 0.06} variants={fadeInUp}>
+                  <div className="h-full bg-white border border-border rounded-2xl p-5 shadow-sm">
+                    <span className="font-cairo font-bold text-2xl text-secondary">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p className="font-tajawal text-sm md:text-base text-foreground/80 leading-relaxed mt-2">
+                      {point}
+                    </p>
+                  </div>
+                </AnimateOnScroll>
+              ))}
+            </div>
+
+            {postContent.links && postContent.links.length > 0 && (
+              <AnimateOnScroll variants={fadeInUp}>
+                <div className="flex flex-wrap justify-center gap-3">
+                  {postContent.links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-cairo font-semibold text-sm inline-flex items-center justify-center min-h-[44px] rounded-full border border-primary/25 text-primary px-5 transition-colors hover:bg-primary hover:text-white"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </AnimateOnScroll>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* Gallery — صور حقيقية من سجل الأنشطة */}
       {gallery && (

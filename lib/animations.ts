@@ -12,6 +12,17 @@ export const fadeInUp: Variants = {
   },
 };
 
+// كشف بطيء وواضح للكروت عند السكرول — حركة أكبر ومدة أطول لتكون ظاهرة
+export const revealUp: Variants = {
+  hidden: { opacity: 0, y: 48, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 1.4, ease: easeOutExpo },
+  },
+};
+
 // دخول ناعم مع ضبابية — للعناوين والأقسام البارزة
 export const blurInUp: Variants = {
   hidden: { opacity: 0, y: 28, filter: "blur(8px)" },

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
 import { zoomIn, zoomOut, slideInRight, slideInLeft } from "@/lib/animations";
+import { irregularWorkNotes } from "@/lib/postContent";
 import LegalFAQ from "./LegalFAQ";
 
 export const metadata: Metadata = {
@@ -141,6 +142,48 @@ export default function LegalPage() {
                     {article.text}
                   </p>
                 </article>
+              </AnimateOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Irregular Work ──────────────────────────────────────────────── */}
+      <section
+        dir="rtl"
+        className="bg-surface px-4 py-12 md:px-8 md:py-16 lg:px-16 lg:py-20"
+        aria-labelledby="irregular-work-heading"
+      >
+        <div className="max-w-4xl mx-auto flex flex-col gap-8">
+          <AnimateOnScroll>
+            <div className="text-center">
+              <h2
+                id="irregular-work-heading"
+                className="font-cairo font-bold text-2xl md:text-3xl text-primary"
+              >
+                العمل غير المنتظم
+              </h2>
+              <p className="font-tajawal text-gray-600 text-base mt-3 max-w-xl mx-auto leading-relaxed">
+                من سلسلة مؤنث سالم التوعوية حول الحقوق في العمل الهش وغير المستقر
+              </p>
+              <div
+                aria-hidden="true"
+                className="mx-auto mt-4 w-14 h-1 rounded-full bg-secondary"
+              />
+            </div>
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {irregularWorkNotes.map((note, i) => (
+              <AnimateOnScroll key={note} delay={i * 0.06} variants={i % 2 === 0 ? slideInRight : slideInLeft}>
+                <div className="h-full bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+                  <span className="font-cairo font-bold text-2xl text-secondary">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="font-tajawal text-gray-700 text-base leading-relaxed mt-2">
+                    {note}
+                  </p>
+                </div>
               </AnimateOnScroll>
             ))}
           </div>

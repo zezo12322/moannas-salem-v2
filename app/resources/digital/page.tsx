@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { AuroraBackground } from "@/components/AuroraBackground";
 import { zoomIn, zoomOut, flipUp, slideInRight, slideInLeft } from "@/lib/animations";
+import { onlineJobSafetyTips } from "@/lib/postContent";
 
 export const metadata: Metadata = {
   title: "الأمان الرقمي",
@@ -261,6 +262,48 @@ export default function DigitalPage() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* ── Online Job Safety ───────────────────────────────────────────── */}
+      <section
+        dir="rtl"
+        className="bg-bg px-4 py-12 md:px-8 md:py-16 lg:px-16 lg:py-20"
+        aria-labelledby="online-job-heading"
+      >
+        <div className="max-w-4xl mx-auto flex flex-col gap-8">
+          <AnimateOnScroll>
+            <div className="text-center">
+              <h2
+                id="online-job-heading"
+                className="font-cairo font-bold text-2xl md:text-3xl text-primary"
+              >
+                أمان عروض العمل الأونلاين
+              </h2>
+              <p className="font-tajawal text-gray-600 text-base mt-3 max-w-xl mx-auto leading-relaxed">
+                من سلسلة “أول شغل” حول حماية نفسك وبياناتك عند التقديم لفرص العمل
+              </p>
+              <div
+                aria-hidden="true"
+                className="mx-auto mt-4 w-14 h-1 rounded-full bg-secondary"
+              />
+            </div>
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {onlineJobSafetyTips.map((tip, i) => (
+              <AnimateOnScroll key={tip} delay={i * 0.06} variants={i % 2 === 0 ? slideInRight : slideInLeft}>
+                <div className="h-full bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+                  <span className="font-cairo font-bold text-2xl text-[#059669]">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="font-tajawal text-gray-700 text-base leading-relaxed mt-2">
+                    {tip}
+                  </p>
+                </div>
+              </AnimateOnScroll>
+            ))}
+          </div>
         </div>
       </section>
 
